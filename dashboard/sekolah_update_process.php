@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $npsn = $_POST['npsn'];
 
     // Update the school data in the database
-    $query = "UPDATE school SET name = '$name', address = '$address', phone = '$phone', accreditation = '$accreditation', npsn = '$npsn' WHERE id_school = 1"; // Assuming you want to update the first school with id_school = 1. Change this condition based on your requirements.
+    $query = "UPDATE sekolah SET nama = '$name', alamat = '$address', no_hp = '$phone', akreditasi = '$accreditation', npsn = '$npsn' WHERE id_sekolah = 1"; // Assuming you want to update the first school with id_school = 1. Change this condition based on your requirements.
     $result = mysqli_query($connection, $query);
 
     if ($result) {

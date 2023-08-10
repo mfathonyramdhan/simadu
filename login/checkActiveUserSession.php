@@ -39,8 +39,8 @@ if (isset($_SESSION['user_id'])) {
   </style>';
 
   echo '<div class="notification">
-    <strong>You have logged in,</strong> You need to log out to login to another account.
-    <div class="countdown-bar"></div>
+  <strong>Anda sudah login,</strong> silahkan logout terlebih dahulu.
+  <div class="countdown-bar"></div>
   </div>';
 
   echo '<script>

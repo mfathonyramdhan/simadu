@@ -11,12 +11,13 @@ if (isset($_SESSION['user_id'])) {
     include '../connection.php';
 
     // Retrieve the user's name from the database based on user_id
-    $query = "SELECT name FROM admin WHERE id_admin = '$userId'";
+    $query = "SELECT nama FROM admin WHERE id_admin = '$userId'";
     $result = mysqli_query($connection, $query);
+
 
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
-        $userName = $row['name'];
+        $userName = $row['nama'];
     }
 }
 ?>

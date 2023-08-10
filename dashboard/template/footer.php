@@ -45,6 +45,15 @@
 
 <!-- All init script -->
 <script src="js/plugins-init/toastr-init.js"></script>
+<script>
+    // Get the elements with the specified classes
+    var sidebarRight = document.querySelector('.sidebar-right');
+    var dlabDemoPanel = document.querySelector('.dlab-demo-panel');
+
+    // Hide the elements
+    sidebarRight.style.display = 'none';
+    dlabDemoPanel.style.display = 'none';
+</script>
 </body>
 
 </html>

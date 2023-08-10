@@ -12,7 +12,7 @@ include '../connection.php';
         // Assuming you have established a database connection
 
         // Retrieve the school data
-        $query = "SELECT * FROM school";
+        $query = "SELECT * FROM sekolah";
         $result = mysqli_query($connection, $query);
 
         // Check if any rows are found
@@ -25,23 +25,23 @@ include '../connection.php';
                 <h2> <a href="sekolah.php"><?php echo $pageTitle; ?> </a> / Update</h2>
                 <form action="sekolah_update_process.php" method="POST">
                     <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" class="form-control" id="name" name="name" value="<?php echo $row['name']; ?>" required>
+                        <label for="name">Nama :</label>
+                        <input type="text" class="form-control" id="name" name="name" value="<?php echo $row['nama']; ?>" required>
                     </div>
                     <div class="form-group">
-                        <label for="address">Address:</label>
-                        <input type="text" class="form-control" id="address" name="address" value="<?php echo $row['address']; ?>" required>
+                        <label for="address">Alamat :</label>
+                        <input type="text" class="form-control" id="address" name="address" value="<?php echo $row['alamat']; ?>" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Phone:</label>
-                        <input type="text" maxlength="20" class="form-control" id="phone" name="phone" value="<?php echo $row['phone']; ?>" required>
+                        <label for="phone">NO HP :</label>
+                        <input type="text" maxlength="20" class="form-control" id="phone" name="phone" value="<?php echo $row['no_hp']; ?>" required>
                     </div>
                     <div class="form-group">
-                        <label for="accreditation">Accreditation:</label>
-                        <input type="text" class="form-control" id="accreditation" name="accreditation" value="<?php echo $row['accreditation']; ?>" required>
+                        <label for="accreditation">Akreditasi :</label>
+                        <input type="text" class="form-control" id="accreditation" name="accreditation" value="<?php echo $row['akreditasi']; ?>" required>
                     </div>
                     <div class="form-group">
-                        <label for="npsn">NPSN:</label>
+                        <label for="npsn">NPSN :</label>
                         <input type="text" maxlength="8" class="form-control" id="npsn" name="npsn" value="<?php echo $row['npsn']; ?>" required>
                     </div>
                     <input type="submit" class="btn btn-primary" value="Update">

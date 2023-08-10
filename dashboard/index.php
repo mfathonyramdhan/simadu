@@ -12,7 +12,7 @@ include '../connection.php';
         // Assuming you have established a database connection
 
         // Retrieve the school data
-        $query = "SELECT * FROM school";
+        $query = "SELECT * FROM sekolah";
         $result = mysqli_query($connection, $query);
 
         // Check if any rows are found
@@ -24,17 +24,17 @@ include '../connection.php';
                 <h2> <?php echo $pageTitle; ?></h2>
                 <table class="table">
                     <tr>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Accreditation</th>
+                        <th>Nama Sekolah</th>
+                        <th>Alamat</th>
+                        <th>No. HP</th>
+                        <th>Akreditasi</th>
                         <th>NPSN</th>
                     </tr>
                     <tr>
-                        <td><?php echo $row['name']; ?></td>
-                        <td><?php echo $row['address']; ?></td>
-                        <td><?php echo $row['phone']; ?></td>
-                        <td><?php echo $row['accreditation']; ?></td>
+                        <td><?php echo $row['nama']; ?></td>
+                        <td><?php echo $row['alamat']; ?></td>
+                        <td><?php echo $row['no_hp']; ?></td>
+                        <td><?php echo $row['akreditasi']; ?></td>
                         <td><?php echo $row['npsn']; ?></td>
                     </tr>
                 </table>

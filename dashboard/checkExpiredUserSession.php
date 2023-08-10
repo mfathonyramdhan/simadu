@@ -41,7 +41,7 @@ if (!isset($_SESSION['user_id'])) {
   </style>';
 
   echo '<div class="notification">
-    <strong>Please log in first!</strong> You need to log in to access this page.
+    <strong>Anda belum login</strong> silahkan login terlebih dahulu
     <div class="countdown-bar"></div>
   </div>';
 
