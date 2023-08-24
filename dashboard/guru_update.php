@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     $teacherId = $_GET['id'];
 
     // Retrieve the teacher data from the database
-    $query = "SELECT * FROM teachers WHERE id_teacher = $teacherId";
+    $query = "SELECT * FROM guru WHERE id_guru = $teacherId";
     $result = mysqli_query($connection, $query);
 
     // Check if the teacher exists
@@ -31,26 +31,35 @@ if (isset($_GET['id'])) {
                             </div>
                             <div class="card-body">
                                 <form method="post" action="guru_update_process.php">
-                                    <input type="hidden" name="teacher_id" value="<?php echo $teacher['id_teacher']; ?>">
+                                    <input type="hidden" name="teacher_id" value="<?php echo $teacher['id_guru']; ?>">
                                     <div class="mb-3">
                                         <label class="form-label">Name</label>
-                                        <input type="text" class="form-control" name="name" value="<?php echo $teacher['name']; ?>">
+                                        <input type="text" class="form-control" name="name" value="<?php echo $teacher['nama']; ?>">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Gender</label>
                                         <select class="form-select" name="gender">
-                                            <option value="Male" <?php if ($teacher['gender'] == 'Male') echo 'selected'; ?>>Male</option>
-                                            <option value="Female" <?php if ($teacher['gender'] == 'Female') echo 'selected'; ?>>Female</option>
+                                            <option value="Laki Laki" <?php if ($teacher['gender'] == 'Laki Laki') echo 'selected'; ?>>Laki Laki</option>
+                                            <option value="Perempuan" <?php if ($teacher['gender'] == 'Perempuan') echo 'selected'; ?>>Perempuan</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Birth Date</label>
-                                        <input type="date" class="form-control" name="birth_date" value="<?php echo $teacher['birth_date']; ?>">
+                                        <label class="form-label">Jabatan</label>
+                                        <input type="text" class="form-control" name="jabatan" value="<?php echo $teacher['jabatan']; ?>">
                                     </div>
+
                                     <div class="mb-3">
-                                        <label class="form-label">nip</label>
-                                        <input type="text" class="form-control" name="nip" value="<?php echo $teacher['nip']; ?>">
+                                        <label class="form-label">Kelas</label>
+
+                                        <select class="form-select" name="class">
+                                            <option value="4" <?php if ($teacher['id_kelas'] == '4') echo 'selected'; ?>>Bukan Wali Kelas</option>
+
+                                            <option value="1" <?php if ($teacher['id_kelas'] == '1') echo 'selected'; ?>>Kelas 1</option>
+                                            <option value="2" <?php if ($teacher['id_kelas'] == '2') echo 'selected'; ?>>Kelas 2</option>
+                                            <option value="3" <?php if ($teacher['id_kelas'] == '3') echo 'selected'; ?>>Kelas 3</option>
+                                        </select>
                                     </div>
+
                                     <div class="mb-3">
                                         <label class="form-label">Email</label>
                                         <input type="email" class="form-control" name="email" value="<?php echo $teacher['email']; ?>">
@@ -58,17 +67,6 @@ if (isset($_GET['id'])) {
                                     <div class="mb-3">
                                         <label class="form-label">Password</label>
                                         <input type="password" class="form-control" name="password">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Class</label>
-
-                                        <select class="form-select" name="class">
-                                            <option value="4" <?php if ($teacher['id_class'] == '4') echo 'selected'; ?>>No Class</option>
-
-                                            <option value="1" <?php if ($teacher['id_class'] == '1') echo 'selected'; ?>>Kelas 1</option>
-                                            <option value="2" <?php if ($teacher['id_class'] == '2') echo 'selected'; ?>>Kelas 2</option>
-                                            <option value="3" <?php if ($teacher['id_class'] == '3') echo 'selected'; ?>>Kelas 3</option>
-                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <button type="submit" name="update_teacher" class="btn btn-primary">Update</button>

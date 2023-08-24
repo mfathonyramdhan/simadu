@@ -12,7 +12,7 @@ function deleteteacher($teacherId, $connection)
 {
 
     // Delete teacher
-    $deleteteacherQuery = "DELETE FROM teachers WHERE id_teacher = $teacherId";
+    $deleteteacherQuery = "DELETE FROM guru WHERE id_guru = $teacherId";
     mysqli_query($connection, $deleteteacherQuery);
 }
 
@@ -38,7 +38,9 @@ if (isset($_POST['delete_teacher'])) {
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2> <?php echo $pageTitle; ?></h2> <a type="button" href="guru_tambah.php" class="btn btn-rounded btn-primary">+ Tambah guru</a>
+                        <h2> <?php echo $pageTitle; ?></h2>
+
+                        <a type="button" href="guru_tambah.php" class="btn btn-rounded btn-primary">+ Tambah guru</a>
                     </div>
                     <div class="card-body">
 
@@ -47,19 +49,21 @@ if (isset($_POST['delete_teacher'])) {
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Name</th>
+                                        <th>Nama</th>
                                         <th>Gender</th>
-                                        <th>Birth Date</th>
-                                        <th>nip</th>
-                                        <th>Wali Kelas</th>
+                                        <th>Jabatan</th>
+
+
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     // Retrieve the data from the teachers table
-                                    $query = "SELECT * FROM teachers";
+                                    $query = "SELECT * FROM guru";
                                     $result = mysqli_query($connection, $query);
+
+
 
                                     // Check if any rows are found
                                     if (mysqli_num_rows($result) > 0) {
@@ -71,24 +75,20 @@ if (isset($_POST['delete_teacher'])) {
                                     ?>
                                             <tr>
                                                 <td><?php echo $counter++; ?></td>
-                                                <td><?php echo $row['name']; ?></td>
+                                                <td><?php echo $row['nama']; ?></td>
                                                 <td><?php echo $row['gender']; ?></td>
-                                                <td><?php echo $row['birth_date']; ?></td>
-                                                <td><?php echo $row['nip']; ?></td>
-                                                <td><?php
-                                                    if ($row['id_class'] === "4") {
-                                                        echo "No Class";
-                                                    } else {
-                                                        echo $row['id_class'];
-                                                    }
-                                                    ?></td>
+                                                <td><?php echo $row['jabatan']; ?></td>
+
+
+
+
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="guru_update.php?id=<?php echo $row['id_teacher']; ?>" class="btn btn-primary shadow btn-xs sharp me-1">
+                                                        <a href="guru_update.php?id=<?php echo $row['id_guru']; ?>" class="btn btn-primary shadow btn-xs sharp me-1">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </a>
                                                         <form method="post" action="">
-                                                            <input type="hidden" name="teacher_id" value="<?php echo $row['id_teacher']; ?>">
+                                                            <input type="hidden" name="teacher_id" value="<?php echo $row['id_guru']; ?>">
                                                             <button type="submit" name="delete_teacher" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Are you sure you want to delete this teacher ?');">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
@@ -115,11 +115,11 @@ if (isset($_POST['delete_teacher'])) {
                                 <tfoot>
                                     <tr>
                                         <th>No</th>
-                                        <th>Name</th>
+                                        <th>Nama</th>
                                         <th>Gender</th>
-                                        <th>Birth Date</th>
-                                        <th>nip</th>
-                                        <th>Class</th>
+                                        <th>Jabatan</th>
+
+
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>

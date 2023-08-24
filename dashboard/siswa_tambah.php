@@ -5,7 +5,7 @@ include 'template/sidebar.php';
 include '../connection.php';
 
 // Retrieve data from the class table
-$query = "SELECT * FROM class";
+$query = "SELECT * FROM kelas";
 $result = mysqli_query($connection, $query);
 ?>
 
@@ -20,23 +20,13 @@ $result = mysqli_query($connection, $query);
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
+                                <label for="name" class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="gender" class="form-label">Gender</label>
-                                <select class="form-select" id="gender" name="gender" required>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="birth_date" class="form-label">Birth Date</label>
-                                <input type="date" class="form-control" id="birth_date" name="birth_date" required>
-                            </div>
+
                             <div class="mb-3">
                                 <label for="nis" class="form-label">NIS</label>
-                                <input type="text" class="form-control" id="nis" name="nis" required>
+                                <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan NIS" required>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
@@ -49,18 +39,29 @@ $result = mysqli_query($connection, $query);
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="id_class" class="form-label">Class</label>
+                                <label for="id_class" class="form-label">Kelas</label>
                                 <select class="form-select" id="id_class" name="id_class" required>
                                     <?php
                                     while ($row = mysqli_fetch_assoc($result)) {
-                                        echo '<option value="' . $row['id_class'] . '">' . $row['name'] . '</option>';
+                                        echo '<option value="' . $row['id_kelas'] . '">' . $row['nama'] . '</option>';
                                     }
                                     ?>
                                 </select>
                             </div>
+                            <div class="mb-3">
+                                <label for="gender" class="form-label">Gender</label>
+                                <select class="form-select" id="gender" name="gender" required>
+                                    <option value="Laki Laki">Laki Laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="birth_date" class="form-label">Tanggal Lahir</label>
+                                <input type="date" class="form-control" id="birth_date" name="birth_date" required>
+                            </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Create Student</button>
+                    <button type="submit" class="btn btn-primary">Tambah Siswa</button>
                 </form>
             </div>
         </div>

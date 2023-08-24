@@ -6,12 +6,12 @@ if (isset($_POST['add_violation'])) {
     $score = $_POST['score'];
 
     // Insert the new violation into the database
-    $insertQuery = "INSERT INTO violation (name, score) VALUES ('$name', $score)";
+    $insertQuery = "INSERT INTO pelanggaran (nama, skor) VALUES ('$name', $score)";
     $insertResult = mysqli_query($connection, $insertQuery);
 
     if ($insertResult) {
         // Violation added successfully
-        echo "<script>alert('Violation added successfully');</script>";
+        echo "<script>alert('Pelanggaran berhasil ditambah');</script>";
         echo "<script>window.location.href = 'pelanggaran.php';</script>";
     } else {
         // Failed to add violation

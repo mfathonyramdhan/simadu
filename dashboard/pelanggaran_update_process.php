@@ -7,12 +7,12 @@ if (isset($_POST['update_violation'])) {
     $score = $_POST['score'];
 
     // Update the violation in the database
-    $updateQuery = "UPDATE violation SET name = '$name', score = $score WHERE id_violation = $violationId";
+    $updateQuery = "UPDATE pelanggaran SET nama = '$name', skor = $score WHERE id_violation = $violationId";
     $updateResult = mysqli_query($connection, $updateQuery);
 
     if ($updateResult) {
         // Violation updated successfully
-        echo "<script>alert('Violation updated successfully');</script>";
+        echo "<script>alert('Pelanggaran berhasil diupdate');</script>";
         echo "<script>window.location.href = 'pelanggaran.php';</script>";
     } else {
         // Failed to update violation

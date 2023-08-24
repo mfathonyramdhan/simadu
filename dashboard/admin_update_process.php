@@ -7,16 +7,16 @@ if (isset($_POST['update_admin'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Check if the password is provided
+    // Check if the password is provided 
     if (!empty($password)) {
         // Hash the password
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Update the admin record with the hashed password
-        $query = "UPDATE admin SET name='$name', email='$email', password='$hashedPassword' WHERE id_admin='$adminId'";
+        $query = "UPDATE admin SET nama='$name', email='$email', password='$hashedPassword' WHERE id_admin='$adminId'";
     } else {
         // Update the admin record without changing the password
-        $query = "UPDATE admin SET name='$name', email='$email' WHERE id_admin='$adminId'";
+        $query = "UPDATE admin SET nama='$name', email='$email' WHERE id_admin='$adminId'";
     }
 
     $result = mysqli_query($connection, $query);

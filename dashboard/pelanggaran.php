@@ -8,7 +8,7 @@ include '../connection.php';
 function deleteviolation($violationId, $connection)
 {
     // Delete violation
-    $deleteviolationQuery = "DELETE FROM violation WHERE id_violation = $violationId";
+    $deleteviolationQuery = "DELETE FROM pelanggaran WHERE id_pelanggaran = $violationId";
     mysqli_query($connection, $deleteviolationQuery);
 }
 
@@ -54,7 +54,7 @@ if (isset($_POST['delete_violation'])) {
                                     <?php
                                     // Retrieve the data from the violation table
                                     $query = "SELECT *
-                                              FROM violation";
+                                              FROM pelanggaran";
 
                                     $result = mysqli_query($connection, $query);
 
@@ -68,17 +68,17 @@ if (isset($_POST['delete_violation'])) {
                                     ?>
                                             <tr>
                                                 <td><?php echo $counter++; ?></td>
-                                                <td><?php echo $row['name']; ?></td>
-                                                <td><?php echo $row['score']; ?></td>
+                                                <td><?php echo $row['nama']; ?></td>
+                                                <td><?php echo $row['skor']; ?></td>
 
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="pelanggaran_update.php?id=<?php echo $row['id_violation']; ?>" class="btn btn-primary shadow btn-xs sharp me-1">
+                                                        <a href="pelanggaran_update.php?id=<?php echo $row['id_pelanggaran']; ?>" class="btn btn-primary shadow btn-xs sharp me-1">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </a>
                                                         <form method="post" action="">
-                                                            <input type="hidden" name="violation_id" value="<?php echo $row['id_violation']; ?>">
-                                                            <button type="submit" name="delete_violation" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Are you sure you want to delete this violation?');">
+                                                            <input type="hidden" name="violation_id" value="<?php echo $row['id_pelanggaran']; ?>">
+                                                            <button type="submit" name="delete_violation" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Yakin ingin menghapus data pelanggaran ini ?');">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
                                                         </form>

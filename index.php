@@ -58,7 +58,7 @@
       </nav>
       <!-- .navbar -->
 
-      <a href="login/login.php" class="get-started-btn">Login</a>
+      <a href="login/index.php" class="get-started-btn">Login</a>
     </div>
   </header>
   <!-- End Header -->

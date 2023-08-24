@@ -9,14 +9,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Hash the password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Perform the insert operation to add a new teacher
-    $query = "INSERT INTO admin (name, email, password) VALUES ('$name', '$email', '$hashedPassword')";
-    $result = mysqli_query($connection, $query);
+    // Check if email already exists
+    $emailCheckQuery = "SELECT id_admin FROM admin WHERE email = '$email'";
+    $emailCheckResult = mysqli_query($connection, $emailCheckQuery);
 
-    // Close the database connection
-    mysqli_close($connection);
+    if (mysqli_num_rows($emailCheckResult) > 0) {
+        // Email already exists, display alert and redirect to admin_tambah.php
+        echo "<script>alert('Email sudah ada. Silahkan pilih email lain.'); window.location.href = 'admin_tambah.php';</script>";
+    } else {
+        // Email is unique, perform the insert operation
+        $insertQuery = "INSERT INTO admin (nama, email, password) VALUES ('$name', '$email', '$hashedPassword')";
+        $insertResult = mysqli_query($connection, $insertQuery);
 
-    // Redirect back to the teachers page with the toast notification parameters in the URL
-    header("Location: admin.php");
-    exit();
+        // Close the database connection
+        mysqli_close($connection);
+
+        // Redirect back to the admin page with the toast notification parameters in the URL
+        header("Location: admin.php");
+        exit();
+    }
 }

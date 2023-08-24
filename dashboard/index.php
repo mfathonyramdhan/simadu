@@ -38,7 +38,10 @@ include '../connection.php';
                         <td><?php echo $row['npsn']; ?></td>
                     </tr>
                 </table>
-                <a href="sekolah_update.php" class="btn btn-primary">Update Data</a>
+
+                <?php if ($role == 1) { ?>
+                    <a href="sekolah_update.php" class="btn btn-primary">Update Data</a>
+                <?php } ?>
             </div>
 
         <?php

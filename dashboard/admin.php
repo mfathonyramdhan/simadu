@@ -7,7 +7,7 @@ include '../connection.php';
 
 
 
-// Function to delete the admin and parents
+// Function to delete the admin and parents 
 function deleteadmin($adminId, $connection)
 {
     // Delete parents first
@@ -50,7 +50,7 @@ if (isset($_POST['delete_admin'])) {
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Name</th>
+                                        <th>Nama</th>
                                         <th>Email</th>
                                         <th>Action</th>
                                     </tr>
@@ -71,7 +71,7 @@ if (isset($_POST['delete_admin'])) {
                                     ?>
                                             <tr>
                                                 <td><?php echo $counter++; ?></td>
-                                                <td><?php echo $row['name']; ?></td>
+                                                <td><?php echo $row['nama']; ?></td>
                                                 <td><?php echo $row['email']; ?></td>
 
                                                 <td>
@@ -107,7 +107,7 @@ if (isset($_POST['delete_admin'])) {
                                 <tfoot>
                                     <tr>
                                         <th>No</th>
-                                        <th>Name</th>
+                                        <th>Nama</th>
                                         <th>Email</th>
 
                                         <th>Action</th>

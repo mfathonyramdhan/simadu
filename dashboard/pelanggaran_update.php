@@ -9,14 +9,14 @@ if (isset($_GET['id'])) {
     $violationId = $_GET['id'];
 
     // Retrieve the violation data from the database
-    $query = "SELECT * FROM violation WHERE id_violation = $violationId";
+    $query = "SELECT * FROM pelanggaran WHERE id_pelanggaran = $violationId";
     $result = mysqli_query($connection, $query);
 
     // Check if the violation exists
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-        $name = $row['name'];
-        $score = $row['score'];
+        $name = $row['nama'];
+        $score = $row['skor'];
     } else {
         // Redirect if the violation does not exist
         echo "<script>window.location.href = 'pelanggaran.php';</script>";

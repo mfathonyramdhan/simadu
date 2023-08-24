@@ -11,11 +11,11 @@ include '../connection.php';
 function deleteStudent($studentId, $connection)
 {
     // Delete parents first
-    $deleteParentsQuery = "DELETE FROM parents WHERE id_student = $studentId";
+    $deleteParentsQuery = "DELETE FROM ortu WHERE id_siswa = $studentId";
     mysqli_query($connection, $deleteParentsQuery);
 
     // Delete student
-    $deleteStudentQuery = "DELETE FROM students WHERE id_student = $studentId";
+    $deleteStudentQuery = "DELETE FROM siswa WHERE id_siswa = $studentId";
     mysqli_query($connection, $deleteStudentQuery);
 }
 
@@ -50,18 +50,18 @@ if (isset($_POST['delete_student'])) {
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Name</th>
+                                        <th>Nama</th>
                                         <th>Gender</th>
-                                        <th>Birth Date</th>
+                                        <th>Tanggal Lahir</th>
                                         <th>NIS</th>
-                                        <th>Class</th>
+                                        <th>Kelas</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    // Retrieve the data from the students table
-                                    $query = "SELECT * FROM students";
+                                    // Retrieve the data from the siswa table
+                                    $query = "SELECT * FROM siswa";
                                     $result = mysqli_query($connection, $query);
 
                                     // Check if any rows are found
@@ -74,24 +74,24 @@ if (isset($_POST['delete_student'])) {
                                     ?>
                                             <tr>
                                                 <td><?php echo $counter++; ?></td>
-                                                <td><?php echo $row['name']; ?></td>
+                                                <td><?php echo $row['nama']; ?></td>
                                                 <td><?php echo $row['gender']; ?></td>
-                                                <td><?php echo $row['birth_date']; ?></td>
+                                                <td><?php echo date('d/m/Y', strtotime($row['tanggal_lahir'])); ?></td>
                                                 <td><?php echo $row['nis']; ?></td>
                                                 <td><?php
-                                                    if ($row['id_class'] === "4") {
-                                                        echo "No Class";
+                                                    if ($row['id_kelas'] === "4") {
+                                                        echo "Tidak ada kelas";
                                                     } else {
-                                                        echo $row['id_class'];
+                                                        echo $row['id_kelas'];
                                                     }
                                                     ?></td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="siswa_update.php?id=<?php echo $row['id_student']; ?>" class="btn btn-primary shadow btn-xs sharp me-1">
+                                                        <a href="siswa_update.php?id=<?php echo $row['id_siswa']; ?>" class="btn btn-primary shadow btn-xs sharp me-1">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </a>
                                                         <form method="post" action="">
-                                                            <input type="hidden" name="student_id" value="<?php echo $row['id_student']; ?>">
+                                                            <input type="hidden" name="student_id" value="<?php echo $row['id_siswa']; ?>">
                                                             <button type="submit" name="delete_student" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Are you sure you want to delete this student and their parents?');">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
@@ -118,11 +118,11 @@ if (isset($_POST['delete_student'])) {
                                 <tfoot>
                                     <tr>
                                         <th>No</th>
-                                        <th>Name</th>
+                                        <th>Nama</th>
                                         <th>Gender</th>
-                                        <th>Birth Date</th>
+                                        <th>Tanggal Lahir</th>
                                         <th>NIS</th>
-                                        <th>Class</th>
+                                        <th>Kelas</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>

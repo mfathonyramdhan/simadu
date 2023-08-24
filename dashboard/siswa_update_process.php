@@ -17,10 +17,10 @@ if (isset($_POST['update_student'])) {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Update the student record with the hashed password
-        $query = "UPDATE students SET name='$name', gender='$gender', birth_date='$birthDate', nis='$nis', email='$email', password='$hashedPassword', id_class='$idClass' WHERE id_student='$studentId'";
+        $query = "UPDATE siswa SET nama='$name', gender='$gender', tanggal_lahir='$birthDate', nis='$nis', email='$email', password='$hashedPassword', id_kelas='$idClass' WHERE id_siswa='$studentId'";
     } else {
         // Update the student record without changing the password
-        $query = "UPDATE students SET name='$name', gender='$gender', birth_date='$birthDate', nis='$nis', email='$email', id_class='$idClass' WHERE id_student='$studentId'";
+        $query = "UPDATE siswa SET nama='$name', gender='$gender', tanggal_lahir='$birthDate', nis='$nis', email='$email', id_kelas='$idClass' WHERE id_siswa='$studentId'";
     }
 
     $result = mysqli_query($connection, $query);

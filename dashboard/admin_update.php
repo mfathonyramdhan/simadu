@@ -9,7 +9,7 @@ include '../connection.php';
 if (isset($_GET['id'])) {
     $adminId = $_GET['id'];
 
-    // Retrieve the admin data from the database
+    // Retrieve the admin data from the database 
     $query = "SELECT * FROM admin WHERE id_admin = $adminId";
     $result = mysqli_query($connection, $query);
 
@@ -34,7 +34,7 @@ if (isset($_GET['id'])) {
                                     <input type="hidden" name="admin_id" value="<?php echo $admin['id_admin']; ?>">
                                     <div class="mb-3">
                                         <label class="form-label">Name</label>
-                                        <input type="text" class="form-control" name="name" value="<?php echo $admin['name']; ?>">
+                                        <input type="text" class="form-control" name="name" value="<?php echo $admin['nama']; ?>">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Email</label>

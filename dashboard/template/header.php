@@ -4,20 +4,28 @@ include 'checkExpiredUserSession.php';
 
 $userName = '';
 
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['user_email'])) {
+    $userEmail = $_SESSION['user_email'];
     $userId = $_SESSION['user_id'];
+
 
     // Assuming you have established a database connection
     include '../connection.php';
 
     // Retrieve the user's name from the database based on user_id
-    $query = "SELECT nama FROM admin WHERE id_admin = '$userId'";
+    $query = "SELECT email FROM admin WHERE email = '$userEmail'";
     $result = mysqli_query($connection, $query);
+
+    $query2 = "SELECT email FROM siswa WHERE email = '$userEmail'";
+    $result2 = mysqli_query($connection, $query2);
 
 
     if (mysqli_num_rows($result) === 1) {
-        $row = mysqli_fetch_assoc($result);
-        $userName = $row['nama'];
+        $role = 1;
+    } else if (mysqli_num_rows($result2) === 1) {
+        $role = 2;
+    } else {
+        $role = 3;
     }
 }
 ?>
@@ -54,18 +62,6 @@ if (isset($_SESSION['user_id'])) {
 
 <body>
 
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div id="preloader">
-        <div class="lds-ripple">
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-    <!--*******************
-        Preloader end
-    ********************-->
 
     <!--**********************************
         Main wrapper start

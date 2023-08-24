@@ -4,11 +4,11 @@ include 'template/header.php';
 include 'template/sidebar.php';
 include '../connection.php';
 
-// Function to delete the violation
+// Function to delete the pelanggaran
 function deleteViolationDetail($violationDetailId, $connection)
 {
-    // Delete violation detail
-    $deleteViolationDetailQuery = "DELETE FROM violation_detail WHERE id_student = $violationDetailId";
+    // Delete pelanggaran detail
+    $deleteViolationDetailQuery = "DELETE FROM pelanggaran_detail WHERE id_pelanggaran_detail = $violationDetailId";
     mysqli_query($connection, $deleteViolationDetailQuery);
 }
 
@@ -16,12 +16,12 @@ function deleteViolationDetail($violationDetailId, $connection)
 if (isset($_POST['delete_violation'])) {
     $violationDetailId = $_POST['violation_id'];
 
-    // Validate violation detail ID
+    // Validate pelanggaran detail ID
     if (!empty($violationDetailId)) {
-        // Delete the violation detail
+        // Delete the pelanggaran detail
         deleteViolationDetail($violationDetailId, $connection);
     } else {
-        echo "<script>alert('Invalid violation detail ID');</script>";
+        echo "<script>alert('Invalid pelanggaran detail ID');</script>";
     }
 }
 
@@ -45,19 +45,21 @@ if (isset($_POST['delete_violation'])) {
                                         <th>No</th>
                                         <th>Keterangan</th>
                                         <th>Total Skor</th>
-                                        <th>Nama Siswa</th>
-                                        <th>Action</th>
+                                        <th>Nama Siswa</th> <?php if ($role == 2) { ?>
+
+                                            <th>Action</th> <?php } ?>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    // Retrieve the data from the violation table and student table, sorted by id_student
-                                    $query = "SELECT violation_detail.id_violation_detail, GROUP_CONCAT(violation.name SEPARATOR ', ') AS violation_names, SUM(violation.score) AS total_score, students.name AS student_name, students.id_student AS student_id
-                                              FROM violation_detail
-                                              JOIN violation ON violation_detail.id_violation = violation.id_violation
-                                              JOIN students ON violation_detail.id_student = students.id_student
-                                              GROUP BY violation_detail.id_student
-                                              ORDER BY students.id_student";
+                                    // Retrieve the data from the pelanggaran table and student table, sorted by id_siswa
+                                    $query = "SELECT pelanggaran_detail.id_pelanggaran_detail, GROUP_CONCAT(pelanggaran.nama SEPARATOR ', ') AS violation_names, SUM(pelanggaran.skor) AS total_score, siswa.nama AS student_name, siswa.id_siswa AS student_id
+                                              FROM pelanggaran_detail
+                                              JOIN pelanggaran ON pelanggaran_detail.id_pelanggaran = pelanggaran.id_pelanggaran
+                                              JOIN siswa ON pelanggaran_detail.id_siswa = siswa.id_siswa
+                                              GROUP BY pelanggaran_detail.id_siswa
+                                              ORDER BY siswa.id_siswa";
 
                                     $result = mysqli_query($connection, $query);
 
@@ -89,21 +91,28 @@ if (isset($_POST['delete_violation'])) {
                                             <tr>
                                                 <td><?php echo $counter++; ?></td>
                                                 <td><?php echo $row['violation_names']; ?></td>
-                                                <td><span class="badge <?php echo $badgeClass; ?>"><?php echo $row['total_score']; ?> <?php echo $note; ?></span></td>
-                                                <td><?php echo $row['student_name']; ?></td>
                                                 <td>
-                                                    <div class="d-flex">
-                                                        <!-- <a href="pelanggaran_detail_update.php?id=<?php echo $row['id_violation_detail']; ?>" class="btn btn-primary shadow btn-xs sharp me-1">
+                                                    <span class="badge <?php echo $badgeClass; ?>"><?php echo $row['total_score']; ?> <?php echo $note; ?></span>
+                                                </td>
+                                                <td><?php echo $row['student_name']; ?></td>
+
+                                                <?php if ($role == 2) { ?>
+
+                                                    <td>
+                                                        <div class="d-flex">
+                                                            <!-- <a href="pelanggaran_detail_update.php?id=<?php echo $row['id_pelanggaran_detail']; ?>" class="btn btn-primary shadow btn-xs sharp me-1">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </a> -->
-                                                        <form method="post" action="">
-                                                            <input type="hidden" name="violation_id" value="<?php echo $row['student_id']; ?>">
-                                                            <button type="submit" name="delete_violation" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Are you sure you want to delete all violation details for this student?');">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </form>
-                                                    </div>
-                                                </td>
+                                                            <form method="post" action="">
+                                                                <input type="hidden" name="violation_id" value="<?php echo $row['id_pelanggaran_detail']; ?>">
+                                                                <button type="submit" name="delete_violation" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Yakin menghapus data pelanggaran ini ?');">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                <?php } ?>
+
                                             </tr>
                                         <?php
                                         }
@@ -111,7 +120,7 @@ if (isset($_POST['delete_violation'])) {
                                         // No data found
                                         ?>
                                         <tr>
-                                            <td colspan="6">No data found.</td>
+                                            <td colspan="5" class="text-center"> belum ada Data pelanggaran.</td>
                                         </tr>
                                     <?php
                                     }
@@ -127,7 +136,10 @@ if (isset($_POST['delete_violation'])) {
                                         <th>Keterangan</th>
                                         <th>Total Skor</th>
                                         <th>Nama Siswa</th>
-                                        <th>Action</th>
+                                        <?php if ($role == 2) { ?>
+
+                                            <th>Action</th> <?php } ?>
+
                                     </tr>
                                 </tfoot>
                             </table>

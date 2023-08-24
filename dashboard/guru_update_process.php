@@ -5,8 +5,8 @@ if (isset($_POST['update_teacher'])) {
     $teacherId = $_POST['teacher_id'];
     $name = $_POST['name'];
     $gender = $_POST['gender'];
-    $birthDate = $_POST['birth_date'];
-    $nip = $_POST['nip'];
+    $jabatan = $_POST['jabatan'];
+    // $nip = $_POST['nip'];
     $email = $_POST['email'];
     $idClass = $_POST['class'];
     $password = $_POST['password'];
@@ -16,25 +16,19 @@ if (isset($_POST['update_teacher'])) {
         // Hash the password
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // Update the teacher record with the hashed password
-        $query = "UPDATE teachers SET name='$name', gender='$gender', birth_date='$birthDate', nip='$nip', email='$email', password='$hashedPassword', id_class='$idClass' WHERE id_teacher='$teacherId'";
+
+        $query = "UPDATE guru SET nama='$name', gender='$gender', jabatan='$jabatan', email='$email', id_kelas='$idClass', password='$hashedPassword', WHERE id_guru='$teacherId'";
     } else {
         // Update the teacher record without changing the password
-        $query = "UPDATE teachers SET name='$name', gender='$gender', birth_date='$birthDate', nip='$nip', email='$email', id_class='$idClass' WHERE id_teacher='$teacherId'";
+
+        $query = "UPDATE guru SET nama='$name', gender='$gender', jabatan='$jabatan', email='$email', id_kelas='$idClass' WHERE id_guru='$teacherId'";
     }
+
+    $query = "UPDATE guru SET nama='$name', gender='$gender', jabatan='$jabatan', id_kelas='$idClass' WHERE id_guru='$teacherId'";
 
     $result = mysqli_query($connection, $query);
-
-    if ($result) {
-        // Redirect back to the teachers page with a success message
-        header("Location: guru.php");
-        exit();
-    } else {
-        echo "error";
-        // Redirect back to the teachers page with an error message
-        header("Location: guru.php");
-        exit();
-    }
+    mysqli_close($connection);
+    header("Location: guru.php");
 }
 
 // Close the database connection

@@ -10,25 +10,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $violationId = $_POST['violation_id'];
     $studentId = $_POST['student_id'];
 
-    // Insert the violation detail into the database
-    $insertViolationDetailQuery = "INSERT INTO violation_detail (id_violation, id_student)
+    // Insert the pelanggaran detail into the database
+    $insertViolationDetailQuery = "INSERT INTO pelanggaran_detail (id_pelanggaran, id_siswa)
                                    VALUES ('$violationId', '$studentId')";
 
     if (mysqli_query($connection, $insertViolationDetailQuery)) {
-        echo "<script>alert('Violation detail added successfully.');</script>";
+        echo "<script>alert('Data pelanggaran berhasil ditambahkan.');</script>";
         echo "<script>window.location.href = 'pelanggaran_detail.php';</script>";
     } else {
-        echo "<script>alert('Error adding violation detail: " . mysqli_error($connection) . "');</script>";
+        echo "<script>alert('Error adding pelanggaran detail: " . mysqli_error($connection) . "');</script>";
     }
 }
 
-// Retrieve the data from the violation table
-$query = "SELECT * FROM violation";
+// Retrieve the data from the pelanggaran table
+$query = "SELECT * FROM pelanggaran";
 $violationResult = mysqli_query($connection, $query);
 
 // Retrieve the data from the student table
-$query = "SELECT * FROM students";
-$studentResult = mysqli_query($connection, $query);
+$query2 = "SELECT * FROM siswa";
+$studentResult2 = mysqli_query($connection, $query2);
 ?>
 
 <div class="content-body">
@@ -46,9 +46,9 @@ $studentResult = mysqli_query($connection, $query);
                                 <select name="violation_id" id="violation_id" class="form-select" required>
                                     <option value="" selected disabled>Pilih Pelanggaran</option>
                                     <?php
-                                    // Display violation options
+                                    // Display pelanggaran options
                                     while ($row = mysqli_fetch_assoc($violationResult)) {
-                                        echo "<option value='" . $row['id_violation'] . "'>" . $row['name'] . "</option>";
+                                        echo "<option value='" . $row['id_pelanggaran'] . "'>" . $row['nama'] . "</option>";
                                     }
                                     ?>
                                 </select>
@@ -59,10 +59,27 @@ $studentResult = mysqli_query($connection, $query);
                                     <option value="" selected disabled>Pilih Siswa</option>
                                     <?php
                                     // Display student options
-                                    while ($row = mysqli_fetch_assoc($studentResult)) {
-                                        echo "<option value='" . $row['id_student'] . "'>" . $row['name'] . "</option>";
+                                    while ($row2 = mysqli_fetch_assoc($studentResult2)) {
+                                        $class = "";
+                                        switch ($row2['id_kelas']) {
+                                            case 1:
+                                                $class = "X";
+                                                break;
+                                            case 2:
+                                                $class = "XI";
+                                                break;
+                                            case 3:
+                                                $class = "XII";
+                                                break;
+                                            default:
+                                                // Handle cases where id_kelas is not 1, 2, or 3 if needed
+                                                break;
+                                        }
+
+                                        echo "<option value='" . $row2['id_siswa'] . "'>" . $row2['nama'] . ' - Kelas ' . $class . "</option>";
                                     }
                                     ?>
+
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Tambah</button>
