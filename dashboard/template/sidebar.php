@@ -54,11 +54,11 @@
                                 <i class="fas fa-book"></i>
                                 Mata Pelajaran </a>
                         </li>
-                        <!-- <li><a href="jadwalpelajaran.php" class="" aria-expanded="false">
-                            <i class="fas fa-book-open"></i>
-                            <span class="nav-text">Jadwal Pelajaran</span>
-                        </a>
-                    </li> -->
+                        <li><a href="jadwalpelajaran.php" class="" aria-expanded="false">
+                                <i class="fas fa-calendar"></i>
+                                <span class="nav-text">Jadwal Pelajaran</span>
+                            </a>
+                        </li>
 
                         <li><a href="rapor.php" class="" aria-expanded="false">
                                 <i class="fas fa-scroll"></i>

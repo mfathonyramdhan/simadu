@@ -4,26 +4,28 @@ include 'template/header.php';
 include 'template/sidebar.php';
 include '../connection.php';
 
-// Function to delete the course and course
-function deletecourse($courseId, $connection)
+// Function to delete the schedule
+function deleteschedule($scheduleId, $connection)
 {
-    // Delete course
-    $deletecourseQuery = "DELETE FROM course WHERE id_course = $courseId";
-    mysqli_query($connection, $deletecourseQuery);
+    // Delete schedule
+    $deletescheduleQuery = "DELETE FROM jadpel WHERE jadpel_id = $scheduleId";
+    mysqli_query($connection, $deletescheduleQuery);
 }
 
 // Check if the delete button is clicked
-if (isset($_POST['delete_course'])) {
-    $courseId = $_POST['course_id'];
+if (isset($_POST['delete_schedule'])) {
+    $scheduleId = $_POST['schedule_id'];
 
-    // Validate course ID
-    if (!empty($courseId)) {
-        // Delete the course and course
-        deletecourse($courseId, $connection);
+    // Validate schedule ID
+    if (!empty($scheduleId)) {
+        // Delete the schedule
+        deleteschedule($scheduleId, $connection);
     } else {
-        echo "<script>alert('Invalid course ID');</script>";
+        echo "<script>alert('Invalid schedule ID');</script>";
     }
 }
+
+
 
 ?>
 
@@ -43,19 +45,44 @@ if (isset($_POST['delete_course'])) {
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Name</th>
-                                        <th>day</th>
-                                        <th>start hours</th>
-                                        <th>end hours</th>
+                                        <th>Hari</th>
+                                        <th>Kelas</th>
 
-                                        <th>Action</th>
+                                        <th>Jam ke-1</th>
+                                        <th>Jam ke-2</th>
+                                        <th>Jam ke-3</th>
+                                        <th>Jam ke-4</th>
+                                        <th>Jam ke-5</th>
+                                        <th>Jam ke-6</th>
+                                        <th>Jam ke-7</th>
+                                        <th>Jam ke-8</th>
+
+                                        <th>Aksi</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     // Retrieve the data from the course table
-                                    $query = "SELECT *
-                                              FROM course";
+                                    $query = "SELECT j.*, k.nama AS nama_kelas, 
+                 m1.nama AS nama_mapel_jk1, 
+                 m2.nama AS nama_mapel_jk2,
+                 m3.nama AS nama_mapel_jk3,
+                 m4.nama AS nama_mapel_jk4,
+                 m5.nama AS nama_mapel_jk5,
+                 m6.nama AS nama_mapel_jk6,
+                 m7.nama AS nama_mapel_jk7,
+                 m8.nama AS nama_mapel_jk8
+          FROM jadpel j
+          JOIN kelas k ON j.id_kelas = k.id_kelas
+          JOIN mapel m1 ON j.jadpel_jk1 = m1.id_mapel
+          JOIN mapel m2 ON j.jadpel_jk2 = m2.id_mapel
+          JOIN mapel m3 ON j.jadpel_jk3 = m3.id_mapel
+          JOIN mapel m4 ON j.jadpel_jk4 = m4.id_mapel
+          JOIN mapel m5 ON j.jadpel_jk5 = m5.id_mapel
+          JOIN mapel m6 ON j.jadpel_jk6 = m6.id_mapel
+          JOIN mapel m7 ON j.jadpel_jk7 = m7.id_mapel
+          JOIN mapel m8 ON j.jadpel_jk8 = m8.id_mapel";
 
                                     $result = mysqli_query($connection, $query);
 
@@ -69,18 +96,26 @@ if (isset($_POST['delete_course'])) {
                                     ?>
                                             <tr>
                                                 <td><?php echo $counter++; ?></td>
-                                                <td><?php echo $row['name']; ?></td>
-                                                <td><?php echo $row['day']; ?></td>
-                                                <td><?php echo $row['start_hours']; ?></td>
-                                                <td><?php echo $row['end_hours']; ?></td>
+                                                <td><?php echo $row['jadpel_hari']; ?></td>
+                                                <td><?php echo $row['nama_kelas']; ?></td>
+
+                                                <td><?php echo $row['nama_mapel_jk1']; ?></td>
+                                                <td><?php echo $row['nama_mapel_jk2']; ?></td>
+                                                <td><?php echo $row['nama_mapel_jk3']; ?></td>
+                                                <td><?php echo $row['nama_mapel_jk4']; ?></td>
+                                                <td><?php echo $row['nama_mapel_jk5']; ?></td>
+                                                <td><?php echo $row['nama_mapel_jk6']; ?></td>
+                                                <td><?php echo $row['nama_mapel_jk7']; ?></td>
+                                                <td><?php echo $row['nama_mapel_jk8']; ?></td>
+
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="jadwalpelajaran_update.php?id=<?php echo $row['id_course']; ?>" class="btn btn-primary shadow btn-xs sharp me-1">
+                                                        <a href="jadwalpelajaran_update.php?id=<?php echo $row['jadpel_id']; ?>" class="btn btn-primary shadow btn-xs sharp me-1">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </a>
                                                         <form method="post" action="">
-                                                            <input type="hidden" name="course_id" value="<?php echo $row['id_course']; ?>">
-                                                            <button type="submit" name="delete_course" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Are you sure you want to delete this course?');">
+                                                            <input type="hidden" name="schedule_id" value="<?php echo $row['jadpel_id']; ?>">
+                                                            <button type="submit" name="delete_schedule" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Yakin mau menghapus jadwal pelajaran ini ?');">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
                                                         </form>
@@ -93,7 +128,7 @@ if (isset($_POST['delete_course'])) {
                                         // No data found
                                         ?>
                                         <tr>
-                                            <td colspan="6">No data found.</td>
+                                            <td colspan="12" class="text-center">Belum ada data.</td>
                                         </tr>
                                     <?php
                                     }
@@ -106,12 +141,19 @@ if (isset($_POST['delete_course'])) {
                                 <tfoot>
                                     <tr>
                                         <th>No</th>
-                                        <th>Name</th>
-                                        <th>day</th>
-                                        <th>start hours</th>
-                                        <th>end hours</th>
+                                        <th>Hari</th>
+                                        <th>Kelas</th>
 
-                                        <th>Action</th>
+                                        <th>Jam ke-1</th>
+                                        <th>Jam ke-2</th>
+                                        <th>Jam ke-3</th>
+                                        <th>Jam ke-4</th>
+                                        <th>Jam ke-5</th>
+                                        <th>Jam ke-6</th>
+                                        <th>Jam ke-7</th>
+                                        <th>Jam ke-8</th>
+
+                                        <th>Aksi</th>
                                     </tr>
                                 </tfoot>
                             </table>
