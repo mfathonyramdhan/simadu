@@ -6,7 +6,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $idRapor = $_GET['id'];
 
     // Fetch student's data from the database based on id_siswa
-    $query = "SELECT r.*, s.nama AS siswa_nama FROM rapor r
+    $query = "SELECT r.*, s.nama AS siswa_nama, s.id_kelas AS siswa_kelas FROM rapor r
     JOIN siswa s ON r.id_siswa = s.id_siswa
     WHERE r.id_rapor = $idRapor";
     $result = mysqli_query($connection, $query);
@@ -2796,8 +2796,19 @@ hQEAAFxKAAAAAA==
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>
                         <td class=xl1521966 colspan=3>Kelas/Semester</td>
-                        <td class=xl1521966>: X / <?php echo $raporData['semester']; ?>
+                        <td class="xl1521966">:
+                            <?php
+                            if ($raporData['siswa_kelas'] == 1) {
+                                echo 'X';
+                            } elseif ($raporData['siswa_kelas'] == 2) {
+                                echo 'XI';
+                            } elseif ($raporData['siswa_kelas'] == 3) {
+                                echo 'XII';
+                            }
+                            echo ' / ' . $raporData['semester'];
+                            ?>
                         </td>
+
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>
@@ -4081,7 +4092,7 @@ hQEAAFxKAAAAAA==
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>
-                        <td class=xl1521966 colspan=4>Situbondo, 26 Juni 2022</td>
+                        <td class=xl1521966 colspan=4>Situbondo, 30 September 2023</td>
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>
                     </tr>
@@ -4175,7 +4186,31 @@ hQEAAFxKAAAAAA==
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>
-                        <td class=xl1521966 colspan=3>Nama Wali kelas</td>
+                        <td class=xl1521966 colspan=3><?php
+                                                        $query = "SELECT g.nama FROM guru g WHERE g.id_kelas = {$raporData['siswa_kelas']}";
+                                                        $result = mysqli_query($connection, $query);
+
+                                                        if ($result) {
+                                                            // Fetch data from the result set, if needed
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                echo $guruNama = $row['nama'];
+                                                                // Process $guruNama as needed
+                                                            }
+
+                                                            // Free the result set
+                                                            mysqli_free_result($result);
+                                                        } else {
+                                                            // Handle query error
+                                                            echo "Error: " . mysqli_error($connection);
+                                                        }
+
+                                                        // Close the database connection
+                                                        ?> </td>
+                        <td class="xl1521966">
+
+
+
+                        </td>
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>
@@ -4652,7 +4687,26 @@ AQAAz0wAAAAA
                         <td height=20 class=xl1521966 style='height:15.0pt'></td>
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>
-                        <td class=xl1521966 colspan=2>namakepala</td>
+                        <td class=xl1521966 colspan=2><?php
+                                                        $query = "SELECT g.nama FROM guru g WHERE g.jabatan = 'Kepala Sekolah'";
+                                                        $result = mysqli_query($connection, $query);
+
+                                                        if ($result) {
+                                                            // Fetch data from the result set, if needed
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                echo $guruNama = $row['nama'];
+                                                                // Process $guruNama as needed
+                                                            }
+
+                                                            // Free the result set
+                                                            mysqli_free_result($result);
+                                                        } else {
+                                                            // Handle query error
+                                                            echo "Error: " . mysqli_error($connection);
+                                                        }
+
+                                                        // Close the database connection
+                                                        ?></td>
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>

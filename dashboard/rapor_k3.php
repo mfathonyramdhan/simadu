@@ -101,7 +101,7 @@ if (isset($_POST['delete_student'])) {
                                                         if (mysqli_num_rows($raporResult) > 0) {
                                                         ?>
                                                             <a href="rapor_print.php?id=<?php echo $row['id_siswa']; ?>" class="btn btn-success shadow">
-                                                                <i class="fas fa-print"></i>
+                                                                <i class="fas fa-eye"></i>
                                                             </a>
                                                         <?php
                                                         }

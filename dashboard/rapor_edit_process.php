@@ -2,6 +2,8 @@
 include '../connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $idRapor = $_POST['id_rapor'];
+
   $idSiswa = $_POST['id_siswa'];
   $semester = $_POST['semester'];
   $tapel = $_POST['tapel'];
@@ -18,10 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $pSkiNilai = $_POST['p_ski_nilai'];
   $pSkiDesk = $_POST['p_ski_desk'];
 
+  // Process Pendidikan Pancasila dan Kewarganegaraan fields
   $pPpNilai = $_POST['p_pp_nilai'];
   $pPpDesk = $_POST['p_pp_desk'];
+
+  // Process Bahasa Indonesia fields
   $pBiNilai = $_POST['p_bi_nilai'];
   $pBiDesk = $_POST['p_bi_desk'];
+
   // Process Matematika fields
   $pMtkNilai = $_POST['p_mtk_nilai'];
   $pMtkDesk = $_POST['p_mtk_desk'];
@@ -37,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Process Bahasa Inggris fields
   $pBigNilai = $_POST['p_big_nilai'];
   $pBigDesk = $_POST['p_big_desk'];
+
 
   $pSbNilai = $_POST['p_sb_nilai'];
   $pSbDesk = $_POST['p_sb_desk'];
@@ -84,68 +91,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $ketNaikKelas = $_POST['ket_naik_kelas'];
 
   // Perform the insert operation to add a new record to the rapor table
-  $query = "INSERT INTO rapor (
-    id_siswa, semester, tapel,
-    spir_predikat, spir_desk,
-    sos_predikat, sos_desk,
-    p_qurdis_nilai, p_qurdis_desk,
-    p_aa_nilai, p_aa_desk,
-    p_fikih_nilai, p_fikih_desk,
-    p_ski_nilai, p_ski_desk,
-    p_pp_nilai, p_pp_desk,
-    p_bi_nilai, p_bi_desk,
-    p_mtk_nilai, p_mtk_desk,
-    p_ba_nilai, p_ba_desk,
-    p_si_nilai, p_si_desk,
-    p_big_nilai, p_big_desk,
-    p_sb_nilai, p_sb_desk,
-    p_pjok_nilai, p_pjok_desk,
-    p_pk_nilai, p_pk_desk,
-    p_aswaja_nilai, p_aswaja_desk,
-    p_inf_nilai, p_inf_desk,
-    p_geo_nilai, p_geo_desk,
-    p_sj_nilai, p_sj_desk,
-    p_sos_nilai, p_sos_desk,
-    p_eko_nilai, p_eko_desk,
-    eks1_nama, eks1_nilai, eks1_ket,
-    eks2_nama, eks2_nilai, eks2_ket,
-    pres1_jenis, pres1_ket,
-    pres2_jenis, pres2_ket,
-    pres3_jenis, pres3_ket,
-    sakit, ijin, alpa,
-    cat_guru, ket_naik_kelas
-  )
-VALUES (
-    '$idSiswa', '$semester', '$tapel',
-    '$spirPredikat', '$spirDeskripsi',
-    '$sosPredikat', '$sosDeskripsi',
-    '$pQurdisNilai', '$pQurdisDesk',
-    '$pAaNilai', '$pAaDesk',
-    '$pFikihNilai', '$pFikihDesk',
-    '$pSkiNilai', '$pSkiDesk',
-    '$pPpNilai', '$pPpDesk',
-    '$pBiNilai', '$pBiDesk',
-    '$pMtkNilai', '$pMtkDesk',
-    '$pBaNilai', '$pBaDesk',
-    '$pSiNilai', '$pSiDesk',
-    '$pBigNilai', '$pBigDesk',
-    '$pSbNilai', '$pSbDesk',
-    '$pPjokNilai', '$pPjokDesk',
-    '$pPkNilai', '$pPkDesk',
-    '$pAswajaNilai', '$pAswajaDesk',
-    '$pInfNilai', '$pInfDesk',
-    '$pGeoNilai', '$pGeoDesk',
-    '$pSjNilai', '$pSjDesk',
-    '$pSosNilai', '$pSosDesk',
-    '$pEkoNilai', '$pEkoDesk',
-    '$eks1Nama', '$eks1Nilai', '$eks1Ket',
-    '$eks2Nama', '$eks2Nilai', '$eks2Ket',
-    '$pres1Jenis', '$pres1Ket',
-    '$pres2Jenis', '$pres2Ket',
-    '$pres3Jenis', '$pres3Ket',
-    '$sakit', '$ijin', '$alpa',
-    '$catGuru', '$ketNaikKelas'
-)";
+  $query = "UPDATE rapor SET
+    id_siswa = '$idSiswa', semester = '$semester', tapel = '$tapel',
+    spir_predikat = '$spirPredikat', spir_desk = '$spirDeskripsi',
+    sos_predikat = '$sosPredikat', sos_desk = '$sosDeskripsi',
+    p_qurdis_nilai = '$pQurdisNilai', p_qurdis_desk = '$pQurdisDesk',
+    p_aa_nilai = '$pAaNilai', p_aa_desk = '$pAaDesk',
+    p_fikih_nilai = '$pFikihNilai', p_fikih_desk = '$pFikihDesk',
+    p_ski_nilai = '$pSkiNilai', p_ski_desk = '$pSkiDesk',
+    p_pp_nilai = '$pPpNilai', p_pp_desk = '$pPpDesk',
+    p_bi_nilai = '$pBiNilai', p_bi_desk = '$pBiDesk',
+    p_mtk_nilai = '$pMtkNilai', p_mtk_desk = '$pMtkDesk',
+    p_ba_nilai = '$pBaNilai', p_ba_desk = '$pBaDesk',
+    p_si_nilai = '$pSiNilai', p_si_desk = '$pSiDesk',
+    p_big_nilai = '$pBigNilai', p_big_desk = '$pBigDesk',
+    p_sb_nilai = '$pSbNilai', p_sb_desk = '$pSbDesk',
+    p_pjok_nilai = '$pPjokNilai', p_pjok_desk = '$pPjokDesk',
+    p_pk_nilai = '$pPkNilai', p_pk_desk = '$pPkDesk',
+    p_aswaja_nilai = '$pAswajaNilai', p_aswaja_desk = '$pAswajaDesk',
+    p_inf_nilai = '$pInfNilai', p_inf_desk = '$pInfDesk',
+    p_geo_nilai = '$pGeoNilai', p_geo_desk = '$pGeoDesk',
+    p_sj_nilai = '$pSjNilai', p_sj_desk = '$pSjDesk',
+    p_sos_nilai = '$pSosNilai', p_sos_desk = '$pSosDesk',
+    p_eko_nilai = '$pEkoNilai', p_eko_desk = '$pEkoDesk',
+    eks1_nama = '$eks1Nama', eks1_nilai = '$eks1Nilai', eks1_ket = '$eks1Ket',
+    eks2_nama = '$eks2Nama', eks2_nilai = '$eks2Nilai', eks2_ket = '$eks2Ket',
+    pres1_jenis = '$pres1Jenis', pres1_ket = '$pres1Ket',
+    pres2_jenis = '$pres2Jenis', pres2_ket = '$pres2Ket',
+    pres3_jenis = '$pres3Jenis', pres3_ket = '$pres3Ket',
+    sakit = '$sakit', ijin = '$ijin', alpa = '$alpa',
+    cat_guru = '$catGuru', ket_naik_kelas = '$ketNaikKelas'
+WHERE id_rapor = '$idRapor'";
 
 
   $result = mysqli_query($connection, $query);
@@ -156,6 +132,6 @@ VALUES (
   mysqli_close($connection);
 
   // Redirect back to the page where the form was submitted from
-  header("Location: rapor_k1.php ");
+  header("Location: rapor_print.php?id=$idSiswa");
   exit();
 }
