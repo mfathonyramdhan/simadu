@@ -58,7 +58,7 @@
       </nav>
       <!-- .navbar -->
 
-      <a href="login/index.php" class="get-started-btn">Login</a>
+      <a href="login/loginsiswa.php" class="get-started-btn">Login</a>
     </div>
   </header>
   <!-- End Header -->
@@ -81,37 +81,49 @@
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="" />
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
             <div class="section-title">
               <h2>MA DARUL ULUM</h2>
-              <p>SEJARAH</p>
+              <p>VISI dan MISI</p>
             </div>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              VISI “Membentuk manusia yang berwawasan likungan, bertaqwa, berilmu, disiplin dan berakhlakul karimah”
+            </p>
+             <p>
+            MISI
             </p>
             <ul>
               <li>
-                <i class="bi bi-check-circle"></i> Ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.
+                <i class="bi bi-check-circle"></i>Meningkatkan sarana, prasarana dan memberdayakan lingkungan madrasah sebagai sumber belajar.
               </li>
               <li>
-                <i class="bi bi-check-circle"></i> Duis aute irure dolor in
-                reprehenderit in voluptate velit.
+                <i class="bi bi-check-circle"></i> Melakukan pembiasaan pembacaan sholawat sebelum memulai pembelajaran.
               </li>
               <li>
-                <i class="bi bi-check-circle"></i> Ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate trideta storacalaperda mastiro
-                dolore eu fugiat nulla pariatur.
+                <i class="bi bi-check-circle"></i> Menumbuhkan semangat belajar ilmu pengetahuan.
               </li>
+               <li>
+                <i class="bi bi-check-circle"></i> Menumbuh kembangkan sikap, perilaku, dan amaliah keagamaan islam di Madrasah.
+              </li> 
+              <li>
+                <i class="bi bi-check-circle"></i> Menerapkan, pembelajaran yang efektif, inovatif, kreatif, dan menyenangkan untuk melaksanakan kurikulum tingkat satuan pendidikan.
+              </li>
+               <li>
+                <i class="bi bi-check-circle"></i> Mewujudkan sistem pendidikan yang mengembangkan ilmu pengetahuan dan teknologi (IPTEK) serta iman dan taqwa (IMTAQ) secara terpadu dan seimbang.
+              </li>
+              <li>
+                <i class="bi bi-check-circle"></i> Mewujudkan pendidikan dengan lulusan yang memiliki kecerdasan pikiran, keluhuran akhlak, kedalaman spiritual dan memiliki keunggulan kompettif di era globalisasi.
+              </li> 
+              <li>
+                <i class="bi bi-check-circle"></i> Mengoptimalkan kegiatan ekstrakurikuler dibidang keagamaan dan umum.
+            </ul> 
+            <li>
+                <i class="bi bi-check-circle"></i> Mengoptimalkan kegiatan ekstrakurikuler dibidang keagamaan dan umum.
             </ul>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-              aute irure dolor in reprehenderit in voluptate
-            </p>
+            <li>
+                <i class="bi bi-check-circle"></i> Mewujudkan madrasah sebagai lembaga pendidikan yang mendapatkan kepercayaan dari masyarakat.
+            </ul>
           </div>
         </div>
       </div>
@@ -123,22 +135,17 @@
       <div class="container">
         <div class="row counters">
           <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="725 " data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="46 " data-purecounter-duration="1" class="purecounter"></span>
             <p>Siswa</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="19" data-purecounter-duration="1" class="purecounter"></span>
             <p>Tenaga Pendidik</p>
           </div>
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Ekstrakurikuler</p>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="7" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
             <p>Fasilitas</p>
           </div>
         </div>
@@ -147,7 +154,7 @@
     <!-- End Counts Section -->
 
     <!-- ======= Why Us Section ======= -->
-    <section id="why-us" class="why-us">
+    <!--<section id="why-us" class="why-us">
       <div class="container" data-aos="fade-up">
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
@@ -218,73 +225,33 @@
           <div class="col-lg-3 col-md-4">
             <div class="icon-box">
               <i class="ri-store-line" style="color: #ffbb2c"></i>
-              <h3><a href="">Lorem Ipsum</a></h3>
+              <h3><a href="">Tempat ibadah masjid</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
             <div class="icon-box">
               <i class="ri-bar-chart-box-line" style="color: #5578ff"></i>
-              <h3><a href="">Dolor Sitema</a></h3>
+              <h3><a href="">Ruang kelas nyaman</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
             <div class="icon-box">
               <i class="ri-calendar-todo-line" style="color: #e80368"></i>
-              <h3><a href="">Sed perspiciatis</a></h3>
+              <h3><a href="">Ruang perpustakaan</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
             <div class="icon-box">
               <i class="ri-paint-brush-line" style="color: #e361ff"></i>
-              <h3><a href="">Magni Dolores</a></h3>
+              <h3><a href="">Lab komputer</a></h3>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 mt-4">
             <div class="icon-box">
               <i class="ri-database-2-line" style="color: #47aeff"></i>
-              <h3><a href="">Nemo Enim</a></h3>
+              <h3><a href="">Gratis seragam putih abu abu</a></h3>
             </div>
           </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-gradienter-line" style="color: #ffa76e"></i>
-              <h3><a href="">Eiusmod Tempor</a></h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-file-list-3-line" style="color: #11dbcf"></i>
-              <h3><a href="">Midela Teren</a></h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-price-tag-2-line" style="color: #4233ff"></i>
-              <h3><a href="">Pira Neve</a></h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-anchor-line" style="color: #b2904f"></i>
-              <h3><a href="">Dirada Pack</a></h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-disc-line" style="color: #b20969"></i>
-              <h3><a href="">Moton Ideal</a></h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-base-station-line" style="color: #ff5828"></i>
-              <h3><a href="">Verdo Park</a></h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-fingerprint-line" style="color: #29cc61"></i>
-              <h3><a href="">Flavor Nivelanda</a></h3>
             </div>
           </div>
         </div>
@@ -296,12 +263,11 @@
         <div class="section-title">
           <h2>MA DARUL ULUM</h2>
           <p>AGENDA</p>
-        </div>
+      </div>
         <div class="row">
           <div class="col-md-6 d-flex align-items-stretch">
             <div class="card">
               <div class="card-img">
-                <img src="assets/img/events-1.jpg" alt="..." />
               </div>
               <div class="card-body">
                 <h5 class="card-title">
@@ -311,10 +277,7 @@
                   Senin, 1 Juli 2023 Pukul 09:00 WIB s/d Selesai
                 </p>
                 <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod
-                  tempor ut labore et dolore magna aliqua. Ut enim ad minim
-                  veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat
+                  kegiatan sekolah yang penting salah satunya ketika siswa sudah berapa di pertengahan semester atau di semester 2, karna para siswa akan di beri raport dan diterima oleh wali murid dan di berikan oleh wali kelas masing masing. 
                 </p>
               </div>
             </div>
@@ -322,20 +285,16 @@
           <div class="col-md-6 d-flex align-items-stretch">
             <div class="card">
               <div class="card-img">
-                <img src="assets/img/events-2.jpg" alt="..." />
               </div>
               <div class="card-body">
                 <h5 class="card-title">
-                  <a href="">PPDB 2023</a>
+                  <a href="">Pramuka 2023</a>
                 </h5>
                 <p class="fst-italic text-center">
-                  1 Juli 2023 s/d 20 Juli 2023
+                  20 Juli 2023
                 </p>
                 <p class="card-text">
-                  Sed ut perspiciatis unde omnis iste natus error sit
-                  voluptatem doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae dicta sunt explicabo
+                 pramuka atau bisa di lakukan kegiatan kemah ini di laksanakan 1 tahun sekali.
                 </p>
               </div>
             </div>
@@ -354,60 +313,39 @@
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="" />
+        
               <div class="member-content">
-                <h4>Kusriadi S.Pd, M.Pd</h4>
+                <h4>Moh. Ramli S.Pd</h4>
                 <span>Kepala Sekolah</span>
                 <p>
-                  Magni qui quod omnis unde et eos fuga et exercitationem.
-                  Odio veritatis perspiciatis quaerat qui aut aut aut
+                   menjabat sebagai kepala sekolah di Madrasah Aliyah Darul Ulum
                 </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="" />
+         
               <div class="member-content">
-                <h4>Haryadi Sudi</h4>
+                <h4>Kustiani,S.M</h4>
                 <span>Guru</span>
                 <p>
-                  Repellat fugiat adipisci nemo illum nesciunt voluptas
-                  repellendus. In architecto rerum rerum temporibus
+                 menjabat sebagai guru mengajar pelajaran PKN sekaligus sebagai Staf Tata Usaha 
                 </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="" />
+              
               <div class="member-content">
-                <h4>Winda Sukma</h4>
+                <h4>Ummi Khairiyah, S.Pd</h4>
                 <span>Guru</span>
                 <p>
-                  Voluptas necessitatibus occaecati quia. Earum totam
-                  consequuntur qui porro et laborum toro des clara
+                  menjabat sebagai guru mengajar pelajaran MTK dan Kimia sekaligus menjadi Bendahara Madrasah
                 </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
               </div>
             </div>
           </div>

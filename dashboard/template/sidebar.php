@@ -87,11 +87,7 @@
                             </a>
                         </li>
 
-                        <li><a href="s_pelanggaran.php" class="" aria-expanded="false">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span class="nav-text">Pelanggaran</span>
-                            </a>
-                        </li>
+
 
                         <li><a href="s_rapor.php" class="" aria-expanded="false">
                                 <i class="fas fa-scroll"></i>
@@ -104,11 +100,7 @@
                                 <span class="nav-text">Sekolah</span>
                             </a>
                         </li>
-                        <li><a href="pelanggaran_detail.php" class="" aria-expanded="false">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span class="nav-text">Data Pelanggaran</span>
-                            </a>
-                        </li>
+
 
                         <li><a href="rapor.php" class="" aria-expanded="false">
                                 <i class="fas fa-scroll"></i>

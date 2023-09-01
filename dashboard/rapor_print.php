@@ -69,6 +69,13 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                         </button>
                                     </form>
 
+                                    <a href="rapor_sendwa.php?id=<?php echo $studentData['id_rapor']; ?>" class="btn btn-success shadow <?php if ($studentData['sent'] == 1) {
+                                                                                                                                            echo 'disabled';
+                                                                                                                                        } ?>">
+                                        <i class="fas fa-paper-plane"></i> Kirim Ke Wali Siswa
+                                    </a>
+
+
                                     <a href="rapor_edit.php?id=<?php echo $studentData['id_rapor']; ?>" class="btn btn-primary shadow">
                                         <i class="fas fa-pencil-alt"></i> Edit
                                     </a>
