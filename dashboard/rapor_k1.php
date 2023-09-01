@@ -93,7 +93,9 @@ if (isset($_POST['delete_student'])) {
                                                             <i class="fas fa-plus"></i>
                                                         </a>
 
+
                                                         <?php
+
                                                         // Check if there is a record for this student in the rapor table
                                                         $raporQuery = "SELECT id_siswa FROM rapor WHERE id_siswa = " . $row['id_siswa'];
                                                         $raporResult = mysqli_query($connection, $raporQuery);
@@ -109,7 +111,12 @@ if (isset($_POST['delete_student'])) {
 
                                                         // Close the result set for the rapor query
                                                         mysqli_free_result($raporResult);
+
+
                                                         ?>
+
+
+
                                                     </div>
                                                 </td>
 

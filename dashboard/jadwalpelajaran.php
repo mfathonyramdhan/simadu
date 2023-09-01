@@ -48,14 +48,16 @@ if (isset($_POST['delete_schedule'])) {
                                         <th>Hari</th>
                                         <th>Kelas</th>
 
-                                        <th>Jam ke-1</th>
-                                        <th>Jam ke-2</th>
-                                        <th>Jam ke-3</th>
-                                        <th>Jam ke-4</th>
-                                        <th>Jam ke-5</th>
-                                        <th>Jam ke-6</th>
-                                        <th>Jam ke-7</th>
-                                        <th>Jam ke-8</th>
+                                        <th>Jam ke - 1 (07.30 – 08.00)</th>
+                                        <th>Jam ke - 2 (08.00 – 08.30)</th>
+                                        <th>Jam ke - 3 (08.30 – 09.00)</th>
+                                        <th>Jam ke - 4 (09.00 – 09.30)</th>
+                                        <th>Jam ke - 5 (10.00 - 10.30)</th>
+                                        <th>Jam ke - 6 (10.30 – 11.00)</th>
+                                        <th>Jam ke - 7 (11.00 – 11.30)</th>
+                                        <th>Jam ke - 8 (11.30 – 12.00)</th>
+
+
 
                                         <th>Aksi</th>
 

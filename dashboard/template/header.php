@@ -19,12 +19,16 @@ if (isset($_SESSION['user_email'])) {
     $query2 = "SELECT email FROM siswa WHERE email = '$userEmail'";
     $result2 = mysqli_query($connection, $query2);
 
-
+    $query3 = "SELECT email FROM guru WHERE email = '$userEmail'";
+    $result3 = mysqli_query($connection, $query3);
+    // role admin = 1
+    // role siswa = 2
+    // role guru = 3
     if (mysqli_num_rows($result) === 1) {
         $role = 1;
     } else if (mysqli_num_rows($result2) === 1) {
         $role = 2;
-    } else {
+    } else if (mysqli_num_rows($result3) === 1) {
         $role = 3;
     }
 }
