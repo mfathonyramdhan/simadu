@@ -49,6 +49,7 @@ if (isset($_POST['delete_class'])) {
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
+                                        <th>Nama Guru Pengampu</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -71,11 +72,30 @@ if (isset($_POST['delete_class'])) {
                                             <tr>
                                                 <td><?php echo $counter++; ?></td>
                                                 <td><?php echo $row['nama']; ?></td>
+                                                <td><?php
+
+                                                    $idguru = $row['id_guru'];
+                                                    $query2 = "SELECT * FROM guru WHERE id_guru = '$idguru' ;";
+                                                    $result2 = mysqli_query($connection, $query2);
+
+                                                    // Check if any rows are found
+                                                    if (mysqli_num_rows($result) > 0) {
+                                                        // Counter variable for numbering the rows
+
+
+
+                                                        // Fetch each row and display the data 
+                                                        while ($row2 = mysqli_fetch_assoc($result2)) {
+                                                            echo $row2['nama'];
+                                                        }
+                                                    }
+                                                    ?></td>
+
                                                 <td>
                                                     <div class="d-flex">
-                                                        <!-- <a href="kelas_update.php?id=<?php echo $row['id_mapel']; ?>" class="btn btn-primary shadow btn-xs sharp me-1">
+                                                        <a href="mapel_update.php?id=<?php echo $row['id_mapel']; ?>" class="btn btn-primary shadow btn-xs sharp me-1">
                                                             <i class="fas fa-pencil-alt"></i>
-                                                        </a> -->
+                                                        </a>
                                                         <form method="post" action="">
                                                             <input type="hidden" name="class_id" value="<?php echo $row['id_mapel']; ?>">
                                                             <button type="submit" name="delete_class" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Yakin ingin menghapus data mapel ini ? ?');">
@@ -105,7 +125,8 @@ if (isset($_POST['delete_class'])) {
                                 <tfoot>
                                     <tr>
                                         <th>No</th>
-                                        <th>Name</th>
+                                        <th>Nama</th>
+                                        <th>Nama Guru Pengampu</th>
 
                                         <th>Action</th>
                                     </tr>
