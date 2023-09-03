@@ -4757,9 +4757,9 @@ AQAAz0wAAAAA
 
         </html>
 
-        <script>
+        /* <script>
             window.print();
-        </script>
+        </script> */
 <?php
     } else {
         echo "Data rapor tidak ditemukan.";

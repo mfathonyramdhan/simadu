@@ -27,6 +27,26 @@ if (isset($_POST['delete_schedule'])) {
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $idSiswa = $_GET['id'];
 
+    // kondisi cek walikelas BEGIN
+    $cekguru = "SELECT * FROM guru WHERE id_guru = $userId AND id_kelas IN (1, 2, 3);";
+    $resultcekguru = mysqli_query($connection, $cekguru);
+    $iswalikelas = 0;
+    if (mysqli_num_rows($resultcekguru) > 0) {
+        $iswalikelas = 1;
+    }
+    // kondisi cek walikelas END
+
+
+    // kondisi cek guru mapel tsb BEGIN
+    $cekgurupengampu = "SELECT * FROM mapel WHERE id_guru = $userId";
+    $resultcekgurupengampu = mysqli_query($connection, $cekgurupengampu);
+
+    if (mysqli_num_rows($resultcekgurupengampu) > 0) {
+        $hasilcekgurupengampu = mysqli_fetch_assoc($resultcekgurupengampu);
+        $isgurupengampu = $hasilcekgurupengampu['nama'];
+    }
+    // kondisi cek guru mapel tsb END
+
     // Fetch student's data from the database based on id_siswa
     $query = "SELECT r.*, s.nama AS siswa_nama FROM rapor r
     JOIN siswa s ON r.id_siswa = s.id_siswa
@@ -62,26 +82,31 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                                 </div>
                                 <div class="col">
-                                    <form method="post" action="">
-                                        <input type="hidden" name="schedule_id" value="<?php echo $studentData['id_rapor']; ?>">
-                                        <button type="submit" name="delete_schedule" class="btn btn-danger shadow sharp" onclick="return confirm('Yakin mau menghapus rapor ini ?');">
-                                            <i class="fa fa-trash"></i> Hapus
-                                        </button>
-                                    </form>
 
-                                    <a href="rapor_sendwa.php?id=<?php echo $studentData['id_rapor']; ?>" class="btn btn-success shadow <?php if ($studentData['sent'] == 1) {
-                                                                                                                                            echo 'disabled';
-                                                                                                                                        } ?>">
-                                        <i class="fas fa-paper-plane"></i> Kirim Ke Wali Siswa
-                                    </a>
+
+                                    <?php if ($iswalikelas == 1 || $role == 1) { ?>
+
+                                        <form method="post" action="">
+                                            <input type="hidden" name="schedule_id" value="<?php echo $studentData['id_rapor']; ?>">
+                                            <button type="submit" name="delete_schedule" class="btn btn-danger shadow sharp" onclick="return confirm('Yakin mau menghapus rapor ini ?');">
+                                                <i class="fa fa-trash"></i> Hapus
+                                            </button>
+                                        </form>
+
+                                        <a href="rapor_sendwa.php?id=<?php echo $studentData['id_rapor']; ?>" class="btn btn-success shadow <?php if ($studentData['sent'] == 1) {
+                                                                                                                                                echo 'disabled';
+                                                                                                                                            } ?>">
+                                            <i class="fas fa-paper-plane"></i> Kirim Ke Wali Siswa
+                                        </a>
+                                    <?php } ?>
 
 
                                     <a href="rapor_edit.php?id=<?php echo $studentData['id_rapor']; ?>" class="btn btn-primary shadow">
-                                        <i class="fas fa-pencil-alt"></i> Edit
+                                        <i class="fas fa-pencil-alt"></i> Update Rapor
                                     </a>
 
                                     <a href="rapor_print_data.php?id=<?php echo $studentData['id_rapor']; ?>" class="btn btn-success shadow">
-                                        <i class="fas fa-print"></i> Print
+                                        <i class="fas fa-print"></i> Print Rapor
                                     </a>
 
                                 </div>

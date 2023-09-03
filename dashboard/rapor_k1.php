@@ -89,18 +89,32 @@ if (isset($_POST['delete_student'])) {
                                                     ?></td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="rapor_tambah.php?id=<?php echo $row['id_siswa']; ?>" class="btn btn-primary shadow" style="margin-right: 20px;">
-                                                            <i class="fas fa-plus"></i>
-                                                        </a>
+                                                        <?php
+
+                                                        $cekguru = "SELECT * FROM guru WHERE id_guru = $userId AND id_kelas IN (1, 2, 3);";
+                                                        $resultcekguru = mysqli_query($connection, $cekguru);
+
+                                                        if (mysqli_num_rows($resultcekguru) > 0) { ?>
+                                                            <a href="rapor_tambah.php?id=<?php echo $row['id_siswa']; ?>" class="btn btn-primary shadow" style="margin-right: 20px;">
+                                                                <i class="fas fa-plus"></i>
+                                                            </a>
+                                                            <?php } else {
 
 
+                                                            if ($role == 1) { ?>
+                                                                <a href="rapor_tambah.php?id=<?php echo $row['id_siswa']; ?>" class="btn btn-primary shadow" style="margin-right: 20px;">
+                                                                    <i class="fas fa-plus"></i>
+                                                                </a>
+
+                                                        <?php }
+                                                        } ?>
                                                         <?php
 
                                                         // Check if there is a record for this student in the rapor table
                                                         $raporQuery = "SELECT id_siswa FROM rapor WHERE id_siswa = " . $row['id_siswa'];
                                                         $raporResult = mysqli_query($connection, $raporQuery);
 
-                                                        // Display the print button only if a record exists in the rapor table
+                                                        // Display the print button only if a record exists in the rapor tablee
                                                         if (mysqli_num_rows($raporResult) > 0) {
                                                         ?>
                                                             <a href="rapor_print.php?id=<?php echo $row['id_siswa']; ?>" class="btn btn-success shadow">
