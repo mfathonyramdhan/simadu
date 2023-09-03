@@ -31,21 +31,23 @@ if (isset($_GET['id'])) {
                             </div>
                             <div class="card-body">
                                 <form method="post" action="siswa_update_process.php">
+
+
                                     <input type="hidden" name="student_id" value="<?php echo $student['id_siswa']; ?>">
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label class="form-label">Nama</label>
-                                                <input type="text" class="form-control" name="name" value="<?php echo $student['nama']; ?>">
+                                                <input type="text" class="form-control" name="name" value="<?php echo $student['nama']; ?>" required>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="form-label">NIS</label>
-                                                <input type="text" class="form-control" name="nis" value="<?php echo $student['nis']; ?>">
+                                                <input type="text" class="form-control" name="nis" value="<?php echo $student['nis']; ?>" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">Email</label>
-                                                <input type="email" class="form-control" name="email" value="<?php echo $student['email']; ?>">
+                                                <input type="email" class="form-control" name="email" value="<?php echo $student['email']; ?>" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">Password</label>
@@ -53,6 +55,15 @@ if (isset($_GET['id'])) {
                                             </div>
                                         </div>
                                         <div class="col">
+                                            <div class="mb-3">
+                                                <label for="nama_ortu" class="form-label">Nama Ortu</label>
+                                                <input type="text" value="<?php echo $student['nama_ortu']; ?>" class="form-control" id="nama_ortu" name="nama_ortu" placeholder="Masukkan nama orang tua" required>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="nohp_ortu" class="form-label">No HP Ortu</label>
+                                                <input type="text" value="<?php echo $student['nohp_ortu']; ?>" class="form-control" id="nohp_ortu" name="nohp_ortu" placeholder="Masukkan NO HP Orang Tua" required>
+                                            </div>
                                             <div class="mb-3">
                                                 <label class="form-label">Gender</label>
                                                 <select class="form-select" name="gender">
@@ -79,6 +90,7 @@ if (isset($_GET['id'])) {
 
 
                                     </div>
+
                                     <div class="mb-3">
                                         <button type="submit" name="update_student" class="btn btn-primary">Update</button>
                                         <a href="siswa.php" class="btn btn-secondary">Cancel</a>
@@ -95,6 +107,9 @@ if (isset($_GET['id'])) {
             </div>
         </div>
         </div>
+
+
+
 
 <?php
     } else {

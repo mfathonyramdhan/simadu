@@ -4758,7 +4758,9 @@ AQAAz0wAAAAA
         </html>
 
         /* <script>
-            window.print();
+            */
+            /* window.print(); */
+            /* 
         </script> */
 <?php
     } else {

@@ -18,16 +18,20 @@ if (isset($_GET['id'])) {
         $semester = $data['semester'];
         $tapel = $data['tapel'];
         $idSiswa = $data['id_siswa'];
+        $nis = $data['nis'];
 
         // API configuration
         $token = "zHuqSvWcxFiekq02au71";
-        $message = "*Pesan Otomatis* _*SIMADU*_ \n\n"
+        $message = "*Pesan Otomatis* _*SIMADU*_ \n"
             . "*Laporan Hasil Belajar Siswa*\n\n"
-            . "Nama Siswa: $namaSiswa\n"
+            . "Nama Siswa : $namaSiswa\n"
+            . "NIS : $nis\n"
             . "Kelas: $kelas\n"
             . "Semester: $semester\n"
             . "Tahun Pelajaran: $tapel\n\n"
-            . "Link Rapor: http://localhost/simadu/dashboard/rapor_print_data.php?id=$raporId \n\n";
+            . "Rapor dapat dilihat di : \n"
+            . "http://localhost/simadu/dashboard/rapor_print_data.php?id=$raporId";
+
 
         // Send WhatsApp message
         $curl = curl_init();

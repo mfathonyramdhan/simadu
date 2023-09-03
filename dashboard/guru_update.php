@@ -33,25 +33,30 @@ if (isset($_GET['id'])) {
                                 <form method="post" action="guru_update_process.php">
                                     <input type="hidden" name="teacher_id" value="<?php echo $teacher['id_guru']; ?>">
                                     <div class="mb-3">
-                                        <label class="form-label">Name</label>
-                                        <input type="text" class="form-control" name="name" value="<?php echo $teacher['nama']; ?>">
+                                        <label class="form-label">Nama</label>
+                                        <input type="text" class="form-control" name="name" value="<?php echo $teacher['nama']; ?>" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Gender</label>
-                                        <select class="form-select" name="gender">
+                                        <select class="form-select" name="gender" required>
                                             <option value="Laki Laki" <?php if ($teacher['gender'] == 'Laki Laki') echo 'selected'; ?>>Laki Laki</option>
                                             <option value="Perempuan" <?php if ($teacher['gender'] == 'Perempuan') echo 'selected'; ?>>Perempuan</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Jabatan</label>
-                                        <input type="text" class="form-control" name="jabatan" value="<?php echo $teacher['jabatan']; ?>">
+                                        <input type="text" class="form-control" name="jabatan" value="<?php echo $teacher['jabatan']; ?>" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="nip" class="form-label">NUPTK / REG</label>
+                                        <input type="number" class="form-control" id="nip" name="nip" value="<?php echo $teacher['nip']; ?>" max="999999999999999999" required>
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Kelas</label>
 
-                                        <select class="form-select" name="class">
+                                        <select class="form-select" name="class" required>
                                             <option value="4" <?php if ($teacher['id_kelas'] == '4') echo 'selected'; ?>>Bukan Wali Kelas</option>
 
                                             <option value="1" <?php if ($teacher['id_kelas'] == '1') echo 'selected'; ?>>Kelas 1</option>
@@ -62,7 +67,7 @@ if (isset($_GET['id'])) {
 
                                     <div class="mb-3">
                                         <label class="form-label">Email</label>
-                                        <input type="email" class="form-control" name="email" value="<?php echo $teacher['email']; ?>">
+                                        <input type="email" class="form-control" name="email" value="<?php echo $teacher['email']; ?>" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Password</label>

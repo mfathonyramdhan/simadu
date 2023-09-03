@@ -65,7 +65,9 @@ if (isset($_GET['id'])) {
                                             </div>
                                             <div class="col">
                                                 <label class="form-label">Semester</label>
-                                                <select class="form-select" name="semester" disabled>
+                                                <input type="hidden" name="semester" value="<?php echo $student['semester']; ?>">
+
+                                                <select class="form-select" name="" disabled>
                                                     <option value="1" <?php if ($student['semester'] == 1) echo "selected"; ?>>1</option>
                                                     <option value="2" <?php if ($student['semester'] == 2) echo "selected"; ?>>2</option>
 
@@ -73,7 +75,8 @@ if (isset($_GET['id'])) {
                                             </div>
                                             <div class="col">
                                                 <label class="form-label">Tahun Pelajaran</label>
-                                                <select class="form-select" name="tapel" disabled>
+                                                <input type="hidden" name="tapel" value="<?php echo $student['tapel']; ?>">
+                                                <select class="form-select" name="" disabled>
                                                     <option value="20232024" <?php if ($student['tapel'] == "20232024") echo "selected"; ?>>2023/2024</option>
                                                     <option value="20242025" <?php if ($student['tapel'] == "20242025") echo "selected"; ?>>2024/2025</option>
                                                     <option value="20252026" <?php if ($student['tapel'] == "20252026") echo "selected"; ?>>2025/2026</option>
@@ -85,7 +88,7 @@ if (isset($_GET['id'])) {
                                         </div>
 
 
-                                        <div class="row <?php if ($iswalikelas == 1) {
+                                        <div class="row <?php if ($iswalikelas == 0) {
                                                             echo 'd-none';
                                                         } ?>">
 
@@ -250,8 +253,9 @@ if (isset($_GET['id'])) {
                                                 <h4>Keterangan Naik Kelas</h4>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <label class="form-label">Predikat</label>
+                                                        <label class="form-label">Keterangan Naik kelas</label>
                                                         <select class="form-select" name="ket_naik_kelas">
+                                                            <option value="" <?php if ($student['ket_naik_kelas'] === '') echo 'selected'; ?>></option>
                                                             <option value="naik" <?php if ($student['ket_naik_kelas'] === 'naik') echo 'selected'; ?>>Naik Kelas</option>
                                                             <option value="tetap" <?php if ($student['ket_naik_kelas'] === 'tetap') echo 'selected'; ?>>Tetap Di Kelas</option>
                                                         </select>

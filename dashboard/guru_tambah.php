@@ -20,8 +20,8 @@ $result = mysqli_query($connection, $query);
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
+                                <label for="nama" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="nama" name="nama" required>
                             </div>
 
 
@@ -29,6 +29,7 @@ $result = mysqli_query($connection, $query);
                                 <label for="jabatan" class="form-label">Jabatan</label>
                                 <input type="text" class="form-control" id="jabatan" name="jabatan" required>
                             </div>
+
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" required>
@@ -37,6 +38,10 @@ $result = mysqli_query($connection, $query);
 
                         </div>
                         <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="nip" class="form-label">NUPTK / REG</label>
+                                <input type="number" class="form-control" id="nip" name="nip" required>
+                            </div>
                             <div class="mb-3">
                                 <label for="gender" class="form-label">Gender</label>
                                 <select class="form-select" id="gender" name="gender" required>

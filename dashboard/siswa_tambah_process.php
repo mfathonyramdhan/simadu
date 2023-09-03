@@ -6,6 +6,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $gender = $_POST['gender'];
     $birthDate = $_POST['birth_date'];
     $nis = $_POST['nis'];
+    $nohp_ortu = $_POST['nohp_ortu'];
+    $nama_ortu = $_POST['nama_ortu'];
+
     $email = $_POST['email'];
     $idClass = $_POST['id_class'];
     $password = $_POST['password'];
@@ -14,11 +17,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     $emailCheckQuery = "SELECT id_siswa FROM siswa WHERE email = '$email'";
     $emailCheckResult = mysqli_query($connection, $emailCheckQuery);
+
+    $nohpCheckQuery = "SELECT id_siswa FROM siswa WHERE nohp_ortu = '$nohp'";
+    $nohpCheckResult = mysqli_query($connection, $nohpCheckQuery);
+
+    $nisCheckQuery = "SELECT id_siswa FROM siswa WHERE nis = '$nis'";
+    $nisCheckResult = mysqli_query($connection, $nisCheckQuery);
     if (mysqli_num_rows($emailCheckResult) > 0) {
         echo "<script>alert('Email sudah ada. Silahkan pilih email lain.'); window.location.href = 'siswa_tambah.php';</script>";
+    } else if (mysqli_num_rows($nohpCheckResult) > 0) {
+        echo "<script>alert('No HP sudah ada. Silahkan pilih No HP lain.'); window.location.href = 'siswa_tambah.php';</script>";
+    } else if (mysqli_num_rows($nisCheckResult) > 0) {
+        echo "<script>alert('NIS sudah ada. Silahkan pilih NIS lain.'); window.location.href = 'siswa_tambah.php';</script>";
     } else {
         // Perform the insert operation to add a new student
-        $query = "INSERT INTO siswa (nama, gender, tanggal_lahir, nis, email, password, id_kelas) VALUES ('$name', '$gender', '$birthDate', '$nis', '$email', '$hashedPassword', '$idClass')";
+        $query = "INSERT INTO siswa (nama, gender, tanggal_lahir, nis, nama_ortu, nohp_ortu, email, password, id_kelas) VALUES ('$name', '$gender', '$birthDate', '$nis', '$nama_ortu', '$nohp_ortu', '$email', '$hashedPassword', '$idClass')";
 
         $result = mysqli_query($connection, $query);
 

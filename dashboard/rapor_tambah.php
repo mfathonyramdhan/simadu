@@ -268,7 +268,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
 
                                                     <div class="col">
-                                                        <label class="form-label">Predikat</label>
+                                                        <label class="form-label">Keterangan Naik Kelas</label>
                                                         <select class="form-select" name="ket_naik_kelas">
                                                             <option value="-"></option>
                                                             <option value="naik">Naik Kelas</option>

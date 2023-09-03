@@ -52,6 +52,8 @@ if (isset($_POST['delete_teacher'])) {
                                         <th>Nama</th>
                                         <th>Gender</th>
                                         <th>Jabatan</th>
+                                        <th>NUPTK / REG</th>
+
 
 
                                         <th>Action</th>
@@ -59,7 +61,7 @@ if (isset($_POST['delete_teacher'])) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    // Retrieve the data from the teachers table
+                                    // Retrieve the data from the teachers table 
                                     $query = "SELECT * FROM guru";
                                     $result = mysqli_query($connection, $query);
 
@@ -78,6 +80,7 @@ if (isset($_POST['delete_teacher'])) {
                                                 <td><?php echo $row['nama']; ?></td>
                                                 <td><?php echo $row['gender']; ?></td>
                                                 <td><?php echo $row['jabatan']; ?></td>
+                                                <td><?php echo $row['nip']; ?></td>
 
 
 
@@ -118,6 +121,7 @@ if (isset($_POST['delete_teacher'])) {
                                         <th>Nama</th>
                                         <th>Gender</th>
                                         <th>Jabatan</th>
+                                        <th>NUPTK / REG</th>
 
 
                                         <th>Action</th>

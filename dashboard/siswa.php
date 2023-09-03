@@ -54,6 +54,8 @@ if (isset($_POST['delete_student'])) {
                                         <th>Gender</th>
                                         <th>Tanggal Lahir</th>
                                         <th>NIS</th>
+                                        <th>No HP Ortu</th>
+                                        <th>Nama Ortu</th>
                                         <th>Kelas</th>
                                         <th>Action</th>
                                     </tr>
@@ -78,6 +80,9 @@ if (isset($_POST['delete_student'])) {
                                                 <td><?php echo $row['gender']; ?></td>
                                                 <td><?php echo date('d/m/Y', strtotime($row['tanggal_lahir'])); ?></td>
                                                 <td><?php echo $row['nis']; ?></td>
+                                                <td><?php echo $row['nohp_ortu']; ?></td>
+                                                <td><?php echo $row['nama_ortu']; ?></td>
+
                                                 <td><?php
                                                     if ($row['id_kelas'] === "4") {
                                                         echo "Tidak ada kelas";
@@ -87,12 +92,12 @@ if (isset($_POST['delete_student'])) {
                                                     ?></td>
                                                 <td>
                                                     <div class="d-flex">
-                                                        <a href="siswa_update.php?id=<?php echo $row['id_siswa']; ?>" class="btn btn-primary shadow btn-xs sharp me-1">
+                                                        <a href="siswa_update.php?id=<?php echo $row['id_siswa']; ?>" class="btn btn-primary shadow  sharp me-1">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </a>
                                                         <form method="post" action="">
                                                             <input type="hidden" name="student_id" value="<?php echo $row['id_siswa']; ?>">
-                                                            <button type="submit" name="delete_student" class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Are you sure you want to delete this student and their parents?');">
+                                                            <button type="submit" name="delete_student" class="btn btn-danger shadow  sharp" onclick="return confirm('Are you sure you want to delete this student and their parents?');">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
                                                         </form>
@@ -122,6 +127,8 @@ if (isset($_POST['delete_student'])) {
                                         <th>Gender</th>
                                         <th>Tanggal Lahir</th>
                                         <th>NIS</th>
+                                        <th>No HP Ortu</th>
+                                        <th>Nama Ortu</th>
                                         <th>Kelas</th>
                                         <th>Action</th>
                                     </tr>

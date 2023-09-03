@@ -39,6 +39,15 @@ $result = mysqli_query($connection, $query);
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
+                                <label for="nama_ortu" class="form-label">Nama Ortu</label>
+                                <input type="text" class="form-control" id="nama_ortu" name="nama_ortu" placeholder="Masukkan nama orang tua" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nohp_ortu" class="form-label">No HP Ortu</label>
+                                <input type="text" class="form-control" id="nohp_ortu" name="nohp_ortu" placeholder="Masukkan NO HP Orang Tua" required>
+                            </div>
+                            <div class="mb-3">
                                 <label for="id_class" class="form-label">Kelas</label>
                                 <select class="form-select" id="id_class" name="id_class" required>
                                     <?php
