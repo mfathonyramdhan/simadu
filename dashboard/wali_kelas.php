@@ -35,7 +35,7 @@ include '../connection.php';
                                 <tbody>
                                     <?php
                                     // Retrieve the data from the class table
-                                    $query = "SELECT * FROM guru WHERE id_kelas != '4'";
+                                    $query = "SELECT * FROM guru WHERE id_kelas IN (1, 2, 3)";
                                     $result = mysqli_query($connection, $query);
 
                                     // Check if any rows are found
