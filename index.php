@@ -58,7 +58,7 @@
       </nav>
       <!-- .navbar -->
 
-      <a href="login/loginsiswa.php" class="get-started-btn">Login</a>
+      <a href="login/loginadmin.php" class="get-started-btn">Login</a>
     </div>
   </header>
   <!-- End Header -->
@@ -90,8 +90,8 @@
             <p class="fst-italic">
               VISI “Membentuk manusia yang berwawasan likungan, bertaqwa, berilmu, disiplin dan berakhlakul karimah”
             </p>
-             <p>
-            MISI
+            <p>
+              MISI
             </p>
             <ul>
               <li>
@@ -103,27 +103,27 @@
               <li>
                 <i class="bi bi-check-circle"></i> Menumbuhkan semangat belajar ilmu pengetahuan.
               </li>
-               <li>
+              <li>
                 <i class="bi bi-check-circle"></i> Menumbuh kembangkan sikap, perilaku, dan amaliah keagamaan islam di Madrasah.
-              </li> 
+              </li>
               <li>
                 <i class="bi bi-check-circle"></i> Menerapkan, pembelajaran yang efektif, inovatif, kreatif, dan menyenangkan untuk melaksanakan kurikulum tingkat satuan pendidikan.
               </li>
-               <li>
+              <li>
                 <i class="bi bi-check-circle"></i> Mewujudkan sistem pendidikan yang mengembangkan ilmu pengetahuan dan teknologi (IPTEK) serta iman dan taqwa (IMTAQ) secara terpadu dan seimbang.
               </li>
               <li>
                 <i class="bi bi-check-circle"></i> Mewujudkan pendidikan dengan lulusan yang memiliki kecerdasan pikiran, keluhuran akhlak, kedalaman spiritual dan memiliki keunggulan kompettif di era globalisasi.
-              </li> 
+              </li>
               <li>
                 <i class="bi bi-check-circle"></i> Mengoptimalkan kegiatan ekstrakurikuler dibidang keagamaan dan umum.
-            </ul> 
-            <li>
-                <i class="bi bi-check-circle"></i> Mengoptimalkan kegiatan ekstrakurikuler dibidang keagamaan dan umum.
             </ul>
             <li>
-                <i class="bi bi-check-circle"></i> Mewujudkan madrasah sebagai lembaga pendidikan yang mendapatkan kepercayaan dari masyarakat.
-            </ul>
+              <i class="bi bi-check-circle"></i> Mengoptimalkan kegiatan ekstrakurikuler dibidang keagamaan dan umum.
+              </ul>
+            <li>
+              <i class="bi bi-check-circle"></i> Mewujudkan madrasah sebagai lembaga pendidikan yang mendapatkan kepercayaan dari masyarakat.
+              </ul>
           </div>
         </div>
       </div>
@@ -208,9 +208,9 @@
               </div>
             </div>
             <!-- End .content-->
-          </div>
-        </div>
-      </div>
+    </div>
+    </div>
+    </div>
     </section>
     <!-- End Why Us Section -->
 
@@ -252,9 +252,9 @@
               <h3><a href="">Gratis seragam putih abu abu</a></h3>
             </div>
           </div>
-            </div>
-          </div>
         </div>
+      </div>
+      </div>
       </div>
     </section>
     <!-- End Features Section -->
@@ -263,7 +263,7 @@
         <div class="section-title">
           <h2>MA DARUL ULUM</h2>
           <p>AGENDA</p>
-      </div>
+        </div>
         <div class="row">
           <div class="col-md-6 d-flex align-items-stretch">
             <div class="card">
@@ -277,7 +277,7 @@
                   Senin, 1 Juli 2023 Pukul 09:00 WIB s/d Selesai
                 </p>
                 <p class="card-text">
-                  kegiatan sekolah yang penting salah satunya ketika siswa sudah berapa di pertengahan semester atau di semester 2, karna para siswa akan di beri raport dan diterima oleh wali murid dan di berikan oleh wali kelas masing masing. 
+                  kegiatan sekolah yang penting salah satunya ketika siswa sudah berapa di pertengahan semester atau di semester 2, karna para siswa akan di beri raport dan diterima oleh wali murid dan di berikan oleh wali kelas masing masing.
                 </p>
               </div>
             </div>
@@ -294,7 +294,7 @@
                   20 Juli 2023
                 </p>
                 <p class="card-text">
-                 pramuka atau bisa di lakukan kegiatan kemah ini di laksanakan 1 tahun sekali.
+                  pramuka atau bisa di lakukan kegiatan kemah ini di laksanakan 1 tahun sekali.
                 </p>
               </div>
             </div>
@@ -313,12 +313,12 @@
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-        
+
               <div class="member-content">
                 <h4>Moh. Ramli S.Pd</h4>
                 <span>Kepala Sekolah</span>
                 <p>
-                   menjabat sebagai kepala sekolah di Madrasah Aliyah Darul Ulum
+                  menjabat sebagai kepala sekolah di Madrasah Aliyah Darul Ulum
                 </p>
               </div>
             </div>
@@ -326,12 +326,12 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-         
+
               <div class="member-content">
                 <h4>Kustiani,S.M</h4>
                 <span>Guru</span>
                 <p>
-                 menjabat sebagai guru mengajar pelajaran PKN sekaligus sebagai Staf Tata Usaha 
+                  menjabat sebagai guru mengajar pelajaran PKN sekaligus sebagai Staf Tata Usaha
                 </p>
               </div>
             </div>
@@ -339,7 +339,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              
+
               <div class="member-content">
                 <h4>Ummi Khairiyah, S.Pd</h4>
                 <span>Guru</span>

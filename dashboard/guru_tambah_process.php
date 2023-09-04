@@ -2,7 +2,7 @@
 include '../connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = $_POST['name'];
+    $name = $_POST['nama'];
     $gender = $_POST['gender'];
     $birthDate = $_POST['jabatan'];
     $nip = $_POST['nip'];
