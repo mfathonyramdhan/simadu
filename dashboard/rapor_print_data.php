@@ -6,7 +6,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $idRapor = $_GET['id'];
 
     // Fetch student's data from the database based on id_siswa
-    $query = "SELECT r.*, s.nama AS siswa_nama, s.id_kelas AS siswa_kelas FROM rapor r
+    $query = "SELECT r.*, s.nama AS siswa_nama, s.nis AS nis, s.id_kelas AS siswa_kelas FROM rapor r
     JOIN siswa s ON r.id_siswa = s.id_siswa
     WHERE r.id_rapor = $idRapor";
     $result = mysqli_query($connection, $query);
@@ -2792,21 +2792,35 @@ hQEAAFxKAAAAAA==
                     </tr>
                     <tr height=20 style='height:15.0pt'>
                         <td height=20 class=xl1521966 style='height:15.0pt'>NIS</td>
-                        <td class=xl1521966 colspan=2>: NIS</td>
+                        <td class=xl1521966 colspan=2>: -</td>
                         <td class=xl1521966></td>
                         <td class=xl1521966></td>
-                        <td class=xl1521966 colspan=3>Kelas/Semester</td>
+                        <td class=xl1521966 colspan=3>Kelas / Semester</td>
                         <td class="xl1521966">:
                             <?php
                             if ($raporData['siswa_kelas'] == 1) {
-                                echo 'X';
+                                $kelas = 'X';
                             } elseif ($raporData['siswa_kelas'] == 2) {
-                                echo 'XI';
+                                $kelas = 'XI';
                             } elseif ($raporData['siswa_kelas'] == 3) {
-                                echo 'XII';
+                                $kelas = 'XII';
+                            } else {
+                                $kelas = 'Invalid Grade';
                             }
-                            echo ' / ' . $raporData['semester'];
+
+                            $semester = $raporData['semester'];
+
+                            if ($semester == 1) {
+                                $semesterText = 'I';
+                            } elseif ($semester == 2) {
+                                $semesterText = 'II';
+                            } else {
+                                $semesterText = 'Invalid Semester';
+                            }
+
+                            echo $kelas . ' / ' . $semesterText;
                             ?>
+
                         </td>
 
                         <td class=xl1521966></td>
@@ -2815,11 +2829,21 @@ hQEAAFxKAAAAAA==
                     </tr>
                     <tr height=21 style='height:15.75pt'>
                         <td height=21 class=xl10121966 style='height:15.75pt'>NISN</td>
-                        <td class=xl10121966 colspan=2>: NISN</td>
+                        <td class=xl10121966 colspan=2>: <?= $raporData['nis']; ?></td>
                         <td class=xl10121966>&nbsp;</td>
                         <td class=xl10121966>&nbsp;</td>
                         <td class=xl10121966 colspan=3>Tahun Pelajaran</td>
-                        <td class=xl10121966 colspan=2>: <?php echo $raporData['tapel']; ?>
+                        <td class=xl10121966 colspan=2>: <?php
+                                                            $tapel = $raporData['tapel'];
+                                                            if (strlen($tapel) === 8) {
+                                                                $firstYear = substr($tapel, 0, 4);
+                                                                $secondYear = substr($tapel, 4, 4);
+                                                                echo $firstYear . '/' . $secondYear;
+                                                            } else {
+                                                                echo 'Invalid Format';
+                                                            }
+                                                            ?>
+
                         </td>
                         <td class=xl10121966>&nbsp;</td>
                         <td class=xl1521966></td>
@@ -3058,12 +3082,40 @@ hQEAAFxKAAAAAA==
                         </td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_qurdis_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_qurdis_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_qurdis_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3077,12 +3129,40 @@ hQEAAFxKAAAAAA==
                         </td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_aa_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_aa_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_aa_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3095,13 +3175,41 @@ hQEAAFxKAAAAAA==
                         </td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_fikih_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_fikih_nilai']; ?>
                         </td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_fikih_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3115,13 +3223,41 @@ hQEAAFxKAAAAAA==
                         </td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_ski_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_ski_nilai']; ?>
                         </td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_ski_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3136,13 +3272,41 @@ hQEAAFxKAAAAAA==
                         </td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_pp_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_pp_nilai']; ?>
                         </td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_pp_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3156,13 +3320,41 @@ hQEAAFxKAAAAAA==
                         </td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_bi_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_bi_nilai']; ?>
                         </td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_bi_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3176,13 +3368,41 @@ hQEAAFxKAAAAAA==
                         </td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_mtk_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_mtk_nilai']; ?>
                         </td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_mtk_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3195,12 +3415,40 @@ hQEAAFxKAAAAAA==
                         <td class=xl8721966 style='border-top:none;border-left:none'><?php echo $raporData['p_ba_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_ba_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_ba_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_ba_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3213,12 +3461,40 @@ hQEAAFxKAAAAAA==
                         <td class=xl8721966 style='border-top:none;border-left:none'><?php echo $raporData['p_si_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_si_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_si_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_si_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3231,12 +3507,40 @@ hQEAAFxKAAAAAA==
                         <td class=xl8721966 style='border-top:none;border-left:none'><?php echo $raporData['p_big_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_big_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_big_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_big_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3256,12 +3560,40 @@ hQEAAFxKAAAAAA==
                         <td class=xl8721966 style='border-top:none;border-left:none'><?php echo $raporData['p_sb_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_sb_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_sb_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_sb_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3275,12 +3607,40 @@ hQEAAFxKAAAAAA==
                         <td class=xl8721966 style='border-top:none;border-left:none'><?php echo $raporData['p_pjok_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_pjok_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_pjok_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_pjok_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3294,12 +3654,40 @@ hQEAAFxKAAAAAA==
                         <td class=xl8721966 style='border-top:none;border-left:none'><?php echo $raporData['p_pk_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_pk_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_pk_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_pk_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3330,12 +3718,40 @@ hQEAAFxKAAAAAA==
                         <td class=xl8721966 style='border-top:none;border-left:none'><?php echo $raporData['p_aswaja_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_aswaja_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_aswaja_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_aswaja_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3348,12 +3764,40 @@ hQEAAFxKAAAAAA==
                         <td class=xl8721966 style='border-top:none;border-left:none'><?php echo $raporData['p_inf_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_inf_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_inf_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_inf_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3373,12 +3817,40 @@ hQEAAFxKAAAAAA==
                         <td class=xl8721966 style='border-top:none;border-left:none'><?php echo $raporData['p_geo_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_geo_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_geo_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_geo_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3391,12 +3863,40 @@ hQEAAFxKAAAAAA==
                         <td class=xl8721966 style='border-top:none;border-left:none'><?php echo $raporData['p_sj_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_sj_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_sj_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_sj_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3409,12 +3909,40 @@ hQEAAFxKAAAAAA==
                         <td class=xl8721966 style='border-top:none;border-left:none'><?php echo $raporData['p_sos_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_sos_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_sos_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_sos_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3427,12 +3955,40 @@ hQEAAFxKAAAAAA==
                         <td class=xl8721966 style='border-top:none;border-left:none'><?php echo $raporData['p_eko_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_eko_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl8921966 style='border-top:none;border-left:none'><?php echo $raporData['p_eko_nilai']; ?></td>
                         <td class=xl8821966 width=64 style='border-top:none;border-left:none;
   width:48pt'>
-                            <font class="font821966">&nbsp;</font>
+                            <font class="font821966"> <?php
+                                                        $nilai = $raporData['p_eko_nilai'];
+
+                                                        if ($nilai >= 0 && $nilai <= 68) {
+                                                            echo 'D';
+                                                        } elseif ($nilai >= 69 && $nilai <= 78) {
+                                                            echo 'C';
+                                                        } elseif ($nilai >= 79 && $nilai <= 89) {
+                                                            echo 'B';
+                                                        } elseif ($nilai >= 90 && $nilai <= 100) {
+                                                            echo 'A';
+                                                        } else {
+                                                            echo 'Invalid Grade';
+                                                        }
+                                                        ?></font>
                         </td>
                         <td class=xl7121966></td>
                     </tr>
@@ -3848,7 +4404,9 @@ hQEAAFxKAAAAAA==
                         <td height=20 class=xl12321966 style='height:15.0pt;border-top:none'>2</td>
                         <td colspan=4 class=xl14821966 style='border-left:none'><?php echo $raporData['eks2_nama']; ?>
                         </td>
-                        <td colspan=2 class=xl12321966 style='border-left:none'><?php echo $raporData['eks2_nilai']; ?>
+                        <td colspan=2 class=xl12321966 style='border-left:none'><?php if ($raporData['eks2_nama'] != '') {
+                                                                                    echo $raporData['eks2_nilai'];
+                                                                                } ?>
                         </td>
                         <td colspan=4 class=xl14821966 style='border-left:none'><?php echo $raporData['eks2_ket']; ?>
                         </td>
@@ -4055,8 +4613,30 @@ hQEAAFxKAAAAAA==
                         <td class=xl1521966></td>
                     </tr>
                     <tr height=20 style='height:15.0pt'>
-                        <td colspan=11 height=20 class=xl15021966 style='height:15.0pt'>Keterangan
-                            Kenaikan Kelas : <?php echo $raporData['ket_naik_kelas']; ?> ke kelas XI</td>
+                        <td colspan=11 height=20 class=xl15021966 style='height:15.0pt'>
+
+
+
+                            <?php if ($raporData['semester'] == 2 & $raporData['ket_naik_kelas'] == 'naik') {
+
+
+
+                                echo 'Keterangan Kenaikan Kelas : Naik ke kelas ';
+                                if ($raporData['siswa_kelas'] == 1) {
+                                    echo 'XI';
+                                } elseif ($raporData['siswa_kelas'] == 2) {
+                                    echo 'XII';
+                                }
+                            } else if ($raporData['semester'] == 2 & $raporData['ket_naik_kelas'] == 'tetap') {
+                                echo 'Keterangan Kenaikan Kelas : Tetap di kelas ';
+                                if ($raporData['siswa_kelas'] == 1) {
+                                    echo 'X';
+                                } elseif ($raporData['siswa_kelas'] == 2) {
+                                    echo 'XI';
+                                }
+                            }
+
+                            ?></td>
                         <td class=xl1521966></td>
                     </tr>
                     <tr height=20 style='height:15.0pt'>
@@ -4757,11 +5337,11 @@ AQAAz0wAAAAA
 
         </html>
 
-        /* <script>
-            */
-            /* window.print(); */
-            /* 
-        </script> */
+        <script>
+            /*
+            window.print();
+          */
+        </script>
 <?php
     } else {
         echo "Data rapor tidak ditemukan.";

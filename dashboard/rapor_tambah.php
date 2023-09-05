@@ -23,10 +23,10 @@ if (isset($_GET['id'])) {
     // kondisi cek walikelas END
 
 
-    // kondisi cek guru mapel tsb BEGIN
+    // kondisi cek guru mapel tsb BEGIN 
     $cekgurupengampu = "SELECT * FROM mapel WHERE id_guru = $userId";
     $resultcekgurupengampu = mysqli_query($connection, $cekgurupengampu);
-
+    $isgurupengampu = "";
     if (mysqli_num_rows($resultcekgurupengampu) > 0) {
         $hasilcekgurupengampu = mysqli_fetch_assoc($resultcekgurupengampu);
         $isgurupengampu = $hasilcekgurupengampu['nama'];
@@ -145,7 +145,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="eks1_nilai">
+                                                        <input type="number" class="form-control" name="eks1_nilai" min="0" max="100">
                                                     </div>
 
                                                     <div class="col">
@@ -162,7 +162,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="eks2_nilai">
+                                                        <input type="number" class="form-control" name="eks2_nilai" min="0" max="100">
                                                     </div>
 
                                                     <div class="col">
@@ -295,19 +295,20 @@ if (isset($_GET['id'])) {
                                                     <h6> &nbsp; &nbsp; &nbsp; A. Al-Qur'an Hadits</h6>
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_qurdis_nilai">
+                                                        <input type="number" class="form-control" name="p_qurdis_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
                                                         <input type="text" class="form-control" name="p_qurdis_desk">
                                                     </div>
                                                 </div>
+
                                                 <div class="row">
 
                                                     <h6> &nbsp; &nbsp; &nbsp; B. Akidah Akhlaq</h6>
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_aa_nilai">
+                                                        <input type="number" class="form-control" name="p_aa_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -318,7 +319,7 @@ if (isset($_GET['id'])) {
                                                     <h6> &nbsp; &nbsp; &nbsp; C. Fikih</h6>
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_fikih_nilai">
+                                                        <input type="number" class="form-control" name="p_fikih_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -329,7 +330,7 @@ if (isset($_GET['id'])) {
                                                     <h6> &nbsp; &nbsp; &nbsp; D. Sejarah Kebudayaan Islam</h6>
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_ski_nilai">
+                                                        <input type="number" class="form-control" name="p_ski_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -341,7 +342,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_pp_nilai">
+                                                        <input type="number" class="form-control" name="p_pp_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -353,7 +354,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_bi_nilai">
+                                                        <input type="number" class="form-control" name="p_bi_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -365,7 +366,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_mtk_nilai">
+                                                        <input type="number" class="form-control" name="p_mtk_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -377,7 +378,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_ba_nilai">
+                                                        <input type="number" class="form-control" name="p_ba_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -389,7 +390,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_si_nilai">
+                                                        <input type="number" class="form-control" name="p_si_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -401,7 +402,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_big_nilai">
+                                                        <input type="number" class="form-control" name="p_big_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -415,7 +416,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_sb_nilai">
+                                                        <input type="number" class="form-control" name="p_sb_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -427,7 +428,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_pjok_nilai">
+                                                        <input type="number" class="form-control" name="p_pjok_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -439,7 +440,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_pk_nilai">
+                                                        <input type="number" class="form-control" name="p_pk_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -453,7 +454,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_aswaja_nilai">
+                                                        <input type="number" class="form-control" name="p_aswaja_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -466,7 +467,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_inf_nilai">
+                                                        <input type="number" class="form-control" name="p_inf_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -480,7 +481,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_geo_nilai">
+                                                        <input type="number" class="form-control" name="p_geo_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -493,7 +494,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_sj_nilai">
+                                                        <input type="number" class="form-control" name="p_sj_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -506,7 +507,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_sos_nilai">
+                                                        <input type="number" class="form-control" name="p_sos_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -519,7 +520,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_eko_nilai">
+                                                        <input type="number" class="form-control" name="p_eko_nilai" min="0" max="100">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>

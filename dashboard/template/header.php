@@ -13,23 +13,31 @@ if (isset($_SESSION['user_email'])) {
     include '../connection.php';
 
     // Retrieve the user's name from the database based on user_id
-    $query = "SELECT email FROM admin WHERE email = '$userEmail'";
+    $query = "SELECT * FROM admin WHERE email = '$userEmail'";
     $result = mysqli_query($connection, $query);
 
-    $query2 = "SELECT email FROM siswa WHERE email = '$userEmail'";
+    $query2 = "SELECT * FROM siswa WHERE email = '$userEmail'";
     $result2 = mysqli_query($connection, $query2);
 
-    $query3 = "SELECT email FROM guru WHERE email = '$userEmail'";
+    $query3 = "SELECT * FROM guru WHERE email = '$userEmail'";
     $result3 = mysqli_query($connection, $query3);
-    // role admin = 1
-    // role siswa = 2
-    // role guru = 3
+
+    // Initialize role and username
+    $role = 0; // Default role (e.g., 0 for unknown)
+    $username = "";
+
     if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
         $role = 1;
+        $username = $row['nama'];
     } else if (mysqli_num_rows($result2) === 1) {
+        $row = mysqli_fetch_assoc($result2);
         $role = 2;
+        $username = $row['nama'];
     } else if (mysqli_num_rows($result3) === 1) {
+        $row = mysqli_fetch_assoc($result3);
         $role = 3;
+        $username = $row['nama'];
     }
 }
 ?>
@@ -104,10 +112,12 @@ if (isset($_SESSION['user_email'])) {
                         <div class="header-left">
                             <div class="dashboard_bar"><?php echo $pageTitle; ?></div>
                         </div>
+
                         <ul class="navbar-nav header-right">
 
 
                             <li class="nav-item dropdown header-profile">
+                                <h4 style="margin-bottom: 0px;"><?php echo $username; ?></h4>
                                 <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
                                     <img src="images/user.png" width="56" alt="" />
                                 </a>

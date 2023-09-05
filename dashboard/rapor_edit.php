@@ -89,6 +89,8 @@ if (isset($_GET['id'])) {
 
 
                                         <div class="row <?php if ($iswalikelas == 0) {
+                                                            echo "d-display";
+                                                        } else if ($iswalikelas == 0) {
                                                             echo 'd-none';
                                                         } ?>">
 
@@ -146,7 +148,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="eks1_nilai" value="<?php echo $student['eks1_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="eks1_nilai" min="0" max="100" value="<?php echo $student['eks1_nilai']; ?>">
                                                     </div>
 
                                                     <div class="col">
@@ -163,7 +165,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="eks2_nilai" value="<?php echo $student['eks2_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="eks2_nilai" min="0" max="100" value="<?php echo $student['eks2_nilai']; ?>">
                                                     </div>
 
                                                     <div class="col">
@@ -269,7 +271,9 @@ if (isset($_GET['id'])) {
                                         <div class="row">
 
 
-                                            <div class="row <?php if ($isgurupengampu != 'Qurdist') {
+                                            <div class="row <?php if ($role == 1) {
+                                                                echo 'd-display';
+                                                            } else if ($isgurupengampu != 'Qurdist') {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <hr>
@@ -280,7 +284,7 @@ if (isset($_GET['id'])) {
                                                     <h6>&nbsp;&nbsp;&nbsp; A. Al-Qur'an Hadits</h6>
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_qurdis_nilai" value="<?php echo $student['p_qurdis_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_qurdis_nilai" min="0" max="100" value="<?php echo $student['p_qurdis_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -291,13 +295,15 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row <?php if ($isgurupengampu != 'Aqidah') {
+                                            <div class="row <?php if ($role == 1) {
+                                                                echo 'd-display';
+                                                            } else if ($isgurupengampu != 'Aqidah') {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h6>&nbsp;&nbsp;&nbsp; B. Akidah Akhlaq</h6>
                                                 <div class="col">
                                                     <label class="form-label">Nilai</label>
-                                                    <input type="number" class="form-control" name="p_aa_nilai" value="<?php echo $student['p_aa_nilai']; ?>">
+                                                    <input type="number" class="form-control" name="p_aa_nilai" min="0" max="100" value="<?php echo $student['p_aa_nilai']; ?>">
                                                 </div>
                                                 <div class="col">
                                                     <label class="form-label">Deskripsi</label>
@@ -307,13 +313,15 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row  <?php if ($isgurupengampu != 'Fiqih') {
+                                            <div class="row  <?php if ($role == 1) {
+                                                                    echo 'd-display';
+                                                                } else if ($isgurupengampu != 'Fiqih') {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;&nbsp; C. Fikih</h6>
                                                 <div class="col">
                                                     <label class="form-label">Nilai</label>
-                                                    <input type="number" class="form-control" name="p_fikih_nilai" value="<?php echo $student['p_fikih_nilai']; ?>">
+                                                    <input type="number" class="form-control" name="p_fikih_nilai" min="0" max="100" value="<?php echo $student['p_fikih_nilai']; ?>">
                                                 </div>
                                                 <div class="col">
                                                     <label class="form-label">Deskripsi</label>
@@ -324,13 +332,15 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row <?php if ($isgurupengampu != 'SKI') {
+                                            <div class="row <?php if ($role == 1) {
+                                                                echo 'd-display';
+                                                            } else if ($isgurupengampu != 'SKI') {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h6>&nbsp;&nbsp;&nbsp; D. Sejarah Kebudayaan Islam</h6>
                                                 <div class="col">
                                                     <label class="form-label">Nilai</label>
-                                                    <input type="number" class="form-control" name="p_ski_nilai" value="<?php echo $student['p_ski_nilai']; ?>">
+                                                    <input type="number" class="form-control" name="p_ski_nilai" min="0" max="100" value="<?php echo $student['p_ski_nilai']; ?>">
                                                 </div>
                                                 <div class="col">
                                                     <label class="form-label">Deskripsi</label>
@@ -341,14 +351,16 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row <?php if ($isgurupengampu != 'PKN') {
+                                            <div class="row <?php if ($role == 1) {
+                                                                echo 'd-display';
+                                                            } else if ($isgurupengampu != 'PKN') {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h6>&nbsp;&nbsp;2. Pendidikan Pancasila dan Kewarganegaraan</h6>
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_pp_nilai" value="<?php echo $student['p_pp_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_pp_nilai" min="0" max="100" value="<?php echo $student['p_pp_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -359,14 +371,16 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row <?php if ($isgurupengampu != 'Bahasa Indonesia') {
+                                            <div class="row <?php if ($role == 1) {
+                                                                echo 'd-display';
+                                                            } else if ($isgurupengampu != 'Bahasa Indonesia') {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h6>&nbsp;&nbsp;3. Bahasa Indonesia</h6>
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_bi_nilai" value="<?php echo $student['p_bi_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_bi_nilai" min="0" max="100" value="<?php echo $student['p_bi_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -379,14 +393,16 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row  <?php if ($isgurupengampu != 'MTK') {
+                                            <div class="row  <?php if ($role == 1) {
+                                                                    echo 'd-display';
+                                                                } else if ($isgurupengampu != 'MTK') {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;4. Matematika</h6>
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_mtk_nilai" value="<?php echo $student['p_mtk_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_mtk_nilai" min="0" max="100" value="<?php echo $student['p_mtk_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -397,14 +413,16 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row  <?php if ($isgurupengampu != 'Bahasa Arab') {
+                                            <div class="row  <?php if ($role == 1) {
+                                                                    echo 'd-display';
+                                                                } else if ($isgurupengampu != 'Bahasa Arab') {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;5. Bahasa Arab</h6>
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_ba_nilai" value="<?php echo $student['p_ba_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_ba_nilai" min="0" max="100" value="<?php echo $student['p_ba_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -417,14 +435,16 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row   <?php if ($isgurupengampu != 'Sejarah Indonesia') {
+                                            <div class="row   <?php if ($role == 1) {
+                                                                    echo 'd-display';
+                                                                } else if ($isgurupengampu != 'Sejarah Indonesia') {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;6. Sejarah Indonesia</h6>
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_si_nilai" value="<?php echo $student['p_si_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_si_nilai" min="0" max="100" value="<?php echo $student['p_si_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -437,14 +457,16 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row  <?php if ($isgurupengampu != 'Bahasa Inggris') {
+                                            <div class="row  <?php if ($role == 1) {
+                                                                    echo 'd-display';
+                                                                } else if ($isgurupengampu != 'Bahasa Inggris') {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;7. Bahasa Inggris</h6>
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_big_nilai" value="<?php echo $student['p_big_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_big_nilai" min="0" max="100" value="<?php echo $student['p_big_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -457,7 +479,9 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row  <?php if ($isgurupengampu != 'Seni Budaya') {
+                                            <div class="row  <?php if ($role == 1) {
+                                                                    echo 'd-display';
+                                                                } else if ($isgurupengampu != 'Seni Budaya') {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h4>&nbsp;&nbsp;Kelompok B</h4>
@@ -466,7 +490,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_sb_nilai" value="<?php echo $student['p_sb_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_sb_nilai" min="0" max="100" value="<?php echo $student['p_sb_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -480,14 +504,16 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row <?php if ($isgurupengampu != 'Penjas') {
+                                            <div class="row <?php if ($role == 1) {
+                                                                echo 'd-display';
+                                                            } else if ($isgurupengampu != 'Penjas') {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h6>&nbsp;&nbsp;2. Pendidikan Jasmani, Olahraga dan Kesehatan</h6>
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_pjok_nilai" value="<?php echo $student['p_pjok_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_pjok_nilai" min="0" max="100" value="<?php echo $student['p_pjok_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -500,14 +526,16 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row  <?php if ($isgurupengampu != 'Prakarya') {
+                                            <div class="row  <?php if ($role == 1) {
+                                                                    echo 'd-display';
+                                                                } else if ($isgurupengampu != 'Prakarya') {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;3. Prakarya dan Kewirausahaan</h6>
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_pk_nilai" value="<?php echo $student['p_pk_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_pk_nilai" min="0" max="100" value="<?php echo $student['p_pk_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -520,7 +548,9 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row <?php if ($isgurupengampu != 'Aswaja') {
+                                            <div class="row <?php if ($role == 1) {
+                                                                echo 'd-display';
+                                                            } else if ($isgurupengampu != 'Aswaja') {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h6>&nbsp;&nbsp;4. Muatan Lokal</h6>
@@ -528,7 +558,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_aswaja_nilai" value="<?php echo $student['p_aswaja_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_aswaja_nilai" min="0" max="100" value="<?php echo $student['p_aswaja_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -541,14 +571,16 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row  <?php if ($isgurupengampu != 'TIK') {
+                                            <div class="row  <?php if ($role == 1) {
+                                                                    echo 'd-display';
+                                                                } else if ($isgurupengampu != 'TIK') {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;&nbsp; B. Informatika</h6>
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_inf_nilai" value="<?php echo $student['p_inf_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_inf_nilai" min="0" max="100" value="<?php echo $student['p_inf_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -559,7 +591,9 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row <?php if ($isgurupengampu != 'Geografi') {
+                                            <div class="row <?php if ($role == 1) {
+                                                                echo 'd-display';
+                                                            } else if ($isgurupengampu != 'Geografi') {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h4>Kelompok C</h4>
@@ -568,7 +602,7 @@ if (isset($_GET['id'])) {
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_geo_nilai" value="<?php echo $student['p_geo_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_geo_nilai" min="0" max="100" value="<?php echo $student['p_geo_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -580,14 +614,16 @@ if (isset($_GET['id'])) {
 
 
                                             <div class="row 
-                                            <?php if ($isgurupengampu != 'Sejarah') {
+                                            <?php if ($role == 1) {
+                                                echo 'd-display';
+                                            } else if ($isgurupengampu != 'Sejarah') {
                                                 echo 'd-none';
                                             } ?>">
                                                 <h6>&nbsp;&nbsp;2. Sejarah</h6>
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_sj_nilai" value="<?php echo $student['p_sj_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_sj_nilai" min="0" max="100" value="<?php echo $student['p_sj_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -598,14 +634,16 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row  <?php if ($isgurupengampu != 'Sosiologi') {
+                                            <div class="row  <?php if ($role == 1) {
+                                                                    echo 'd-display';
+                                                                } else if ($isgurupengampu != 'Sosiologi') {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;3. Sosiologi</h6>
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_sos_nilai" value="<?php echo $student['p_sos_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_sos_nilai" min="0" max="100" value="<?php echo $student['p_sos_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
@@ -617,14 +655,16 @@ if (isset($_GET['id'])) {
 
 
 
-                                            <div class="row  <?php if ($isgurupengampu != 'Sejarah') {
+                                            <div class="row  <?php if ($role == 1) {
+                                                                    echo 'd-display';
+                                                                } else if ($isgurupengampu != 'Ekonomi') {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;4. Ekonomi</h6>
                                                 <div class="row">
                                                     <div class="col">
                                                         <label class="form-label">Nilai</label>
-                                                        <input type="number" class="form-control" name="p_eko_nilai" value="<?php echo $student['p_eko_nilai']; ?>">
+                                                        <input type="number" class="form-control" name="p_eko_nilai" min="0" max="100" value="<?php echo $student['p_eko_nilai']; ?>">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
