@@ -18,15 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $emailCheckQuery = "SELECT id_siswa FROM siswa WHERE email = '$email'";
     $emailCheckResult = mysqli_query($connection, $emailCheckQuery);
 
-    $nohpCheckQuery = "SELECT id_siswa FROM siswa WHERE nohp_ortu = '$nohp'";
-    $nohpCheckResult = mysqli_query($connection, $nohpCheckQuery);
+
 
     $nisCheckQuery = "SELECT id_siswa FROM siswa WHERE nis = '$nis'";
     $nisCheckResult = mysqli_query($connection, $nisCheckQuery);
     if (mysqli_num_rows($emailCheckResult) > 0) {
         echo "<script>alert('Email sudah ada. Silahkan pilih email lain.'); window.location.href = 'siswa_tambah.php';</script>";
-    } else if (mysqli_num_rows($nohpCheckResult) > 0) {
-        echo "<script>alert('No HP sudah ada. Silahkan pilih No HP lain.'); window.location.href = 'siswa_tambah.php';</script>";
     } else if (mysqli_num_rows($nisCheckResult) > 0) {
         echo "<script>alert('NIS sudah ada. Silahkan pilih NIS lain.'); window.location.href = 'siswa_tambah.php';</script>";
     } else {

@@ -42,8 +42,8 @@ if (isset($_GET['id'])) {
                                             </div>
 
                                             <div class="mb-3">
-                                                <label class="form-label">NIS</label>
-                                                <input type="text" class="form-control" name="nis" value="<?php echo $student['nis']; ?>" required>
+                                                <label class="form-label">NISN</label>
+                                                <input type="text" class="form-control" name="nis" value="<?php echo $student['nis']; ?>" placeholder="Masukkan NISN" required pattern="0[0-9]{9}" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">Email</label>

@@ -25,8 +25,10 @@ $result = mysqli_query($connection, $query);
                             </div>
 
                             <div class="mb-3">
-                                <label for="nis" class="form-label">NIS</label>
-                                <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan NIS" required>
+                                <label for="nis" class="form-label">NISN</label>
+                                <input type="text" class="form-control" id="nis" name="nis" placeholder="Masukkan NISN" required pattern="[0-9]{10}">
+
+
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
