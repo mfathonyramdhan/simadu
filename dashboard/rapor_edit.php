@@ -31,6 +31,18 @@ if (isset($_GET['id'])) {
         $hasilcekgurupengampu = mysqli_fetch_assoc($resultcekgurupengampu);
         $isgurupengampu = $hasilcekgurupengampu['nama'];
     }
+
+    $cekgurupengampu2 = "SELECT * FROM mapel WHERE id_guru = $userId";
+    $resultcekgurupengampu2 = mysqli_query($connection, $cekgurupengampu2);
+
+    while (mysqli_num_rows($resultcekgurupengampu2) > 0) {
+        $hasilcekgurupengampu2 = mysqli_fetch_assoc($resultcekgurupengampu2);
+        $isgurupengampu2 = $hasilcekgurupengampu2['nama'];
+        if ($isgurupengampu2 == $isgurupengampu) {
+            continue;
+        }
+    }
+
     // kondisi cek guru mapel tsb END
 
     // Check if the student exists
@@ -88,7 +100,7 @@ if (isset($_GET['id'])) {
                                         </div>
 
 
-                                        <div class="row <?php if ($iswalikelas == 0) {
+                                        <div class="row <?php if ($iswalikelas == 1) {
                                                             echo "d-display";
                                                         } else if ($iswalikelas == 0) {
                                                             echo 'd-none';
@@ -273,7 +285,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row <?php if ($role == 1) {
                                                                 echo 'd-display';
-                                                            } else if ($isgurupengampu != 'Qurdist') {
+                                                            } else if ($isgurupengampu == '' || $isgurupengampu2 == 'Qurdist') {
+                                                                echo 'd-display';
+                                                            } else {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <hr>
@@ -297,7 +311,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row <?php if ($role == 1) {
                                                                 echo 'd-display';
-                                                            } else if ($isgurupengampu != 'Aqidah') {
+                                                            } else if ($isgurupengampu == 'Aqidah' || $isgurupengampu2 == 'Aqidah') {
+                                                                echo 'd-display';
+                                                            } else {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h6>&nbsp;&nbsp;&nbsp; B. Akidah Akhlaq</h6>
@@ -315,7 +331,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row  <?php if ($role == 1) {
                                                                     echo 'd-display';
-                                                                } else if ($isgurupengampu != 'Fiqih') {
+                                                                } else if ($isgurupengampu == 'Fiqih' || $isgurupengampu2 == 'Fiqih') {
+                                                                    echo 'd-display';
+                                                                } else {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;&nbsp; C. Fikih</h6>
@@ -334,7 +352,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row <?php if ($role == 1) {
                                                                 echo 'd-display';
-                                                            } else if ($isgurupengampu != 'SKI') {
+                                                            } else if ($isgurupengampu == 'SKI' || $isgurupengampu2 == 'SKI') {
+                                                                echo 'd-display';
+                                                            } else {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h6>&nbsp;&nbsp;&nbsp; D. Sejarah Kebudayaan Islam</h6>
@@ -353,7 +373,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row <?php if ($role == 1) {
                                                                 echo 'd-display';
-                                                            } else if ($isgurupengampu != 'PKN') {
+                                                            } else if ($isgurupengampu == 'PKN' || $isgurupengampu2 == 'PKN') {
+                                                                echo 'd-display';
+                                                            } else {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h6>&nbsp;&nbsp;2. Pendidikan Pancasila dan Kewarganegaraan</h6>
@@ -373,7 +395,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row <?php if ($role == 1) {
                                                                 echo 'd-display';
-                                                            } else if ($isgurupengampu != 'Bahasa Indonesia') {
+                                                            } else if ($isgurupengampu == 'Bahasa Indonesia' || $isgurupengampu2 == 'Bahasa Indonesia') {
+                                                                echo 'd-display';
+                                                            } else {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h6>&nbsp;&nbsp;3. Bahasa Indonesia</h6>
@@ -395,7 +419,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row  <?php if ($role == 1) {
                                                                     echo 'd-display';
-                                                                } else if ($isgurupengampu != 'MTK') {
+                                                                } else if ($isgurupengampu == 'MTK' || $isgurupengampu2 == 'MTK') {
+                                                                    echo 'd-display';
+                                                                } else {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;4. Matematika</h6>
@@ -415,7 +441,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row  <?php if ($role == 1) {
                                                                     echo 'd-display';
-                                                                } else if ($isgurupengampu != 'Bahasa Arab') {
+                                                                } else if ($isgurupengampu == 'Bahasa Arab' || $isgurupengampu2 == 'Bahasa Arab') {
+                                                                    echo 'd-display';
+                                                                } else {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;5. Bahasa Arab</h6>
@@ -437,7 +465,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row   <?php if ($role == 1) {
                                                                     echo 'd-display';
-                                                                } else if ($isgurupengampu != 'Sejarah Indonesia') {
+                                                                } else if ($isgurupengampu == 'Sejarah Indonesia' || $isgurupengampu2 == 'Sejarah Indonesia') {
+                                                                    echo 'd-display';
+                                                                } else {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;6. Sejarah Indonesia</h6>
@@ -459,7 +489,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row  <?php if ($role == 1) {
                                                                     echo 'd-display';
-                                                                } else if ($isgurupengampu != 'Bahasa Inggris') {
+                                                                } else if ($isgurupengampu == 'Bahasa Inggris' || $isgurupengampu2 == 'Bahasa Inggris') {
+                                                                    echo 'd-display';
+                                                                } else {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;7. Bahasa Inggris</h6>
@@ -481,7 +513,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row  <?php if ($role == 1) {
                                                                     echo 'd-display';
-                                                                } else if ($isgurupengampu != 'Seni Budaya') {
+                                                                } else if ($isgurupengampu == 'Seni Budaya' || $isgurupengampu2 == 'Seni Budaya') {
+                                                                    echo 'd-display';
+                                                                } else {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h4>&nbsp;&nbsp;Kelompok B</h4>
@@ -506,7 +540,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row <?php if ($role == 1) {
                                                                 echo 'd-display';
-                                                            } else if ($isgurupengampu != 'Penjas') {
+                                                            } else if ($isgurupengampu == 'Penjas' || $isgurupengampu2 == 'Penjas') {
+                                                                echo 'd-display';
+                                                            } else {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h6>&nbsp;&nbsp;2. Pendidikan Jasmani, Olahraga dan Kesehatan</h6>
@@ -528,7 +564,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row  <?php if ($role == 1) {
                                                                     echo 'd-display';
-                                                                } else if ($isgurupengampu != 'Prakarya') {
+                                                                } else if ($isgurupengampu == 'Prakarya' || $isgurupengampu2 == 'Prakarya') {
+                                                                    echo 'd-display';
+                                                                } else {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;3. Prakarya dan Kewirausahaan</h6>
@@ -550,7 +588,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row <?php if ($role == 1) {
                                                                 echo 'd-display';
-                                                            } else if ($isgurupengampu != 'Aswaja') {
+                                                            } else if ($isgurupengampu == 'Aswaja' || $isgurupengampu2 == 'Aswaja') {
+                                                                echo 'd-display';
+                                                            } else {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h6>&nbsp;&nbsp;4. Muatan Lokal</h6>
@@ -573,7 +613,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row  <?php if ($role == 1) {
                                                                     echo 'd-display';
-                                                                } else if ($isgurupengampu != 'TIK') {
+                                                                } else if ($isgurupengampu == 'TIK' || $isgurupengampu2 == 'TIK') {
+                                                                    echo 'd-display';
+                                                                } else {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;&nbsp; B. Informatika</h6>
@@ -593,7 +635,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row <?php if ($role == 1) {
                                                                 echo 'd-display';
-                                                            } else if ($isgurupengampu != 'Geografi') {
+                                                            } else if ($isgurupengampu == 'Geografi' || $isgurupengampu2 == 'Geografi') {
+                                                                echo 'd-display';
+                                                            } else {
                                                                 echo 'd-none';
                                                             } ?>">
                                                 <h4>Kelompok C</h4>
@@ -616,7 +660,9 @@ if (isset($_GET['id'])) {
                                             <div class="row 
                                             <?php if ($role == 1) {
                                                 echo 'd-display';
-                                            } else if ($isgurupengampu != 'Sejarah') {
+                                            } else if ($isgurupengampu == 'Sejarah' || $isgurupengampu2 == 'Sejarah') {
+                                                echo 'd-display';
+                                            } else {
                                                 echo 'd-none';
                                             } ?>">
                                                 <h6>&nbsp;&nbsp;2. Sejarah</h6>
@@ -636,7 +682,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row  <?php if ($role == 1) {
                                                                     echo 'd-display';
-                                                                } else if ($isgurupengampu != 'Sosiologi') {
+                                                                } else if ($isgurupengampu == 'Sosiologi' || $isgurupengampu2 == 'Sosiologi') {
+                                                                    echo 'd-display';
+                                                                } else {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;3. Sosiologi</h6>
@@ -657,7 +705,9 @@ if (isset($_GET['id'])) {
 
                                             <div class="row  <?php if ($role == 1) {
                                                                     echo 'd-display';
-                                                                } else if ($isgurupengampu != 'Ekonomi') {
+                                                                } else if ($isgurupengampu == 'Ekonomi' || $isgurupengampu2 == 'Ekonomi') {
+                                                                    echo 'd-display';
+                                                                } else {
                                                                     echo 'd-none';
                                                                 } ?>">
                                                 <h6>&nbsp;&nbsp;4. Ekonomi</h6>
