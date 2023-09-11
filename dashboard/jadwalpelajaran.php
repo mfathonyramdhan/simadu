@@ -74,7 +74,16 @@ if (isset($_POST['delete_schedule'])) {
                  m5.nama AS nama_mapel_jk5,
                  m6.nama AS nama_mapel_jk6,
                  m7.nama AS nama_mapel_jk7,
-                 m8.nama AS nama_mapel_jk8
+                 m8.nama AS nama_mapel_jk8,
+
+                 m1.id_guru AS guru_mapel_jk1, 
+                 m2.id_guru AS guru_mapel_jk2,
+                 m3.id_guru AS guru_mapel_jk3,
+                 m4.id_guru AS guru_mapel_jk4,
+                 m5.id_guru AS guru_mapel_jk5,
+                 m6.id_guru AS guru_mapel_jk6,
+                 m7.id_guru AS guru_mapel_jk7,
+                 m8.id_guru AS guru_mapel_jk8
           FROM jadpel j
           JOIN kelas k ON j.id_kelas = k.id_kelas
           JOIN mapel m1 ON j.jadpel_jk1 = m1.id_mapel
@@ -101,14 +110,93 @@ if (isset($_POST['delete_schedule'])) {
                                                 <td><?php echo $row['jadpel_hari']; ?></td>
                                                 <td><?php echo $row['nama_kelas']; ?></td>
 
-                                                <td><?php echo $row['nama_mapel_jk1']; ?></td>
-                                                <td><?php echo $row['nama_mapel_jk2']; ?></td>
-                                                <td><?php echo $row['nama_mapel_jk3']; ?></td>
-                                                <td><?php echo $row['nama_mapel_jk4']; ?></td>
-                                                <td><?php echo $row['nama_mapel_jk5']; ?></td>
-                                                <td><?php echo $row['nama_mapel_jk6']; ?></td>
-                                                <td><?php echo $row['nama_mapel_jk7']; ?></td>
-                                                <td><?php echo $row['nama_mapel_jk8']; ?></td>
+                                                <td><?php
+                                                    $idguru = $row['guru_mapel_jk1'];
+
+                                                    $queryguru = "SELECT nama FROM guru WHERE id_guru='$idguru'";
+                                                    $querygurur = mysqli_query($connection, $queryguru);
+                                                    $roww = mysqli_fetch_assoc($querygurur);
+                                                    $namaguru = $roww['nama'];
+                                                    echo $row['nama_mapel_jk1'] . ' // ' . $namaguru;
+
+                                                    ?></td>
+                                                <td><?php
+
+                                                    $idguru = $row['guru_mapel_jk2'];
+
+                                                    $queryguru = "SELECT nama FROM guru WHERE id_guru='$idguru'";
+                                                    $querygurur = mysqli_query($connection, $queryguru);
+                                                    $roww = mysqli_fetch_assoc($querygurur);
+                                                    $namaguru = $roww['nama'];
+                                                    echo $row['nama_mapel_jk2'] . ' // ' . $namaguru;
+
+                                                    ?></td>
+                                                <td><?php
+
+                                                    $idguru = $row['guru_mapel_jk3'];
+
+                                                    $queryguru = "SELECT nama FROM guru WHERE id_guru='$idguru'";
+                                                    $querygurur = mysqli_query($connection, $queryguru);
+                                                    $roww = mysqli_fetch_assoc($querygurur);
+                                                    $namaguru = $roww['nama'];
+                                                    echo $row['nama_mapel_jk3'] . ' // ' . $namaguru;
+
+                                                    ?></td>
+                                                <td><?php
+
+                                                    $idguru = $row['guru_mapel_jk4'];
+
+                                                    $queryguru = "SELECT nama FROM guru WHERE id_guru='$idguru'";
+                                                    $querygurur = mysqli_query($connection, $queryguru);
+                                                    $roww = mysqli_fetch_assoc($querygurur);
+                                                    $namaguru = $roww['nama'];
+                                                    echo $row['nama_mapel_jk4'] . ' // ' . $namaguru;
+
+                                                    ?></td>
+                                                <td><?php
+
+                                                    $idguru = $row['guru_mapel_jk5'];
+
+                                                    $queryguru = "SELECT nama FROM guru WHERE id_guru='$idguru'";
+                                                    $querygurur = mysqli_query($connection, $queryguru);
+                                                    $roww = mysqli_fetch_assoc($querygurur);
+                                                    $namaguru = $roww['nama'];
+                                                    echo $row['nama_mapel_jk5'] . ' // ' . $namaguru;
+
+                                                    ?></td>
+                                                <td><?php
+
+                                                    $idguru = $row['guru_mapel_jk6'];
+
+                                                    $queryguru = "SELECT nama FROM guru WHERE id_guru='$idguru'";
+                                                    $querygurur = mysqli_query($connection, $queryguru);
+                                                    $roww = mysqli_fetch_assoc($querygurur);
+                                                    $namaguru = $roww['nama'];
+                                                    echo $row['nama_mapel_jk6'] . ' // ' . $namaguru;
+
+                                                    ?></td>
+                                                <td><?php
+
+                                                    $idguru = $row['guru_mapel_jk7'];
+
+                                                    $queryguru = "SELECT nama FROM guru WHERE id_guru='$idguru'";
+                                                    $querygurur = mysqli_query($connection, $queryguru);
+                                                    $roww = mysqli_fetch_assoc($querygurur);
+                                                    $namaguru = $roww['nama'];
+                                                    echo $row['nama_mapel_jk7'] . ' // ' . $namaguru;
+
+                                                    ?></td>
+                                                <td><?php
+
+                                                    $idguru = $row['guru_mapel_jk8'];
+
+                                                    $queryguru = "SELECT nama FROM guru WHERE id_guru='$idguru'";
+                                                    $querygurur = mysqli_query($connection, $queryguru);
+                                                    $roww = mysqli_fetch_assoc($querygurur);
+                                                    $namaguru = $roww['nama'];
+                                                    echo $row['nama_mapel_jk8'] . ' // ' . $namaguru;
+
+                                                    ?></td>
 
                                                 <td>
                                                     <div class="d-flex">

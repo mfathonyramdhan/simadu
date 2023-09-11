@@ -1,60 +1,54 @@
 <?php
-
+include '../connection.php';
 
 include 'checkExpiredUserSession.php';
+
+
+$userName = '';
 
 if (isset($_SESSION['user_email'])) {
     $userEmail = $_SESSION['user_email'];
     $userId = $_SESSION['user_id'];
 
-
-    // Assuming you have established a database connection
-    include '../connection.php';
-
     // Retrieve the user's name from the database based on user_id
-    $query = "SELECT email FROM admin WHERE email = '$userEmail'";
+    $query = "SELECT * FROM admin WHERE email = '$userEmail'";
     $result = mysqli_query($connection, $query);
 
-    $query2 = "SELECT email FROM siswa WHERE email = '$userEmail'";
+    $query2 = "SELECT * FROM siswa WHERE email = '$userEmail'";
     $result2 = mysqli_query($connection, $query2);
 
-    $query3 = "SELECT email FROM guru WHERE email = '$userEmail'";
+    $query3 = "SELECT * FROM guru WHERE email = '$userEmail'";
     $result3 = mysqli_query($connection, $query3);
-    // role admin = 1
-    // role siswa = 2
-    // role guru = 3
+
+    // Initialize role and username
+    $role = 0; // Default role (e.g., 0 for unknown)
+    $username = "";
+
     if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
         $role = 1;
+        $username = $row['nama'];
     } else if (mysqli_num_rows($result2) === 1) {
+        $row = mysqli_fetch_assoc($result2);
         $role = 2;
+        $username = $row['nama'];
     } else if (mysqli_num_rows($result3) === 1) {
+        $row = mysqli_fetch_assoc($result3);
         $role = 3;
+        $username = $row['nama'];
     }
-
-
-    // kondisi cek walikelas
-    $cekguru = "SELECT * FROM guru WHERE id_guru = $userId AND id_kelas IN (1, 2, 3);";
-    $resultcekguru = mysqli_query($connection, $cekguru);
-    $iswalikelas = 0;
-    if (mysqli_num_rows($resultcekguru) > 0) {
-        $iswalikelas = 1;
-    }
-    // kondisi cek walikelas
-
-
-    // kondisi cek guru mapel tsb
-    $cekgurupengampu = "SELECT * FROM mapel WHERE id_guru = $userId";
-    $resultcekgurupengampu = mysqli_query($connection, $cekgurupengampu);
-
-    if (mysqli_num_rows($resultcekgurupengampu) > 0) {
-        $hasilcekgurupengampu = mysqli_fetch_assoc($resultcekgurupengampu);
-        $isgurupengampu = $hasilcekgurupengampu['nama'];
-    }
-    // kondisi cek guru mapel tsb
-
 }
-?>
 
-<p> Status wali kelas : <?= $iswalikelas; ?> </p>
-<p> Status Guru Pengampu : <?= $isgurupengampu; ?> </p>
-<p> User Id guru : <?= $userId; ?> </p>
+
+$cekgm = "SELECT * FROM mapel WHERE id_guru = $userId";
+$resultgm = mysqli_query($connection, $cekgm);
+
+while ($row = mysqli_fetch_assoc($resultgm)) {
+    $arraygm[] = $row['nama'];
+}
+print_r($arraygm);
+
+$isgurupengampu = isset($arraygm[0]) ? $arraygm[0] : '';
+$isgurupengampu2 = isset($arraygm[1]) ? $arraygm[1] : '';
+
+echo 'Mapel 1 = ' . $isgurupengampu . '---Mapel 2' . $isgurupengampu2;

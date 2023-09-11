@@ -8,7 +8,7 @@
 $host = 'localhost'; // Replace with your database host
 $username = 'root'; // Replace with your database username
 $password = ''; // Replace with your database password
-$database = 'n1669549_simadu'; // Replace with your database name
+$database = 'n1669549_simaduv2'; // Replace with your database name
 
 
 // Create a database connection

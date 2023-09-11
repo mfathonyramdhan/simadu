@@ -85,7 +85,7 @@ if (isset($_GET['id'])) {
 
 
                                         <!-- a1 -->
-                                        <?php if ($iswalikelas == 1) { ?>
+                                        <?php if ($iswalikelas == 1 || $role == 1) { ?>
                                             <div class="row" style="margin-bottom : 20px;">
                                                 <hr>
                                                 </hr>
@@ -103,7 +103,7 @@ if (isset($_GET['id'])) {
 
                                                 <div class="col">
                                                     <label class="form-label">Deskripsi</label>
-                                                    <input type="text" class="form-control" name="spir_desk">
+                                                    <input type="text" class="form-control" name="spir_desk" maxlength="200">
                                                 </div>
 
                                             </div>
@@ -125,7 +125,7 @@ if (isset($_GET['id'])) {
 
                                                 <div class="col">
                                                     <label class="form-label">Deskripsi</label>
-                                                    <input type="text" class="form-control" name="sos_desk">
+                                                    <input type="text" class="form-control" name="sos_desk" maxlength="200">
                                                 </div>
 
                                             </div>
@@ -299,7 +299,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_qurdis_desk">
+                                                        <input type="text" class="form-control" name="p_qurdis_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -312,7 +312,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_aa_desk">
+                                                        <input type="text" class="form-control" name="p_aa_desk" maxlength="200">
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -323,7 +323,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_fikih_desk">
+                                                        <input type="text" class="form-control" name="p_fikih_desk" maxlength="200">
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -334,7 +334,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_ski_desk">
+                                                        <input type="text" class="form-control" name="p_ski_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -346,7 +346,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_pp_desk">
+                                                        <input type="text" class="form-control" name="p_pp_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -358,7 +358,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_bi_desk">
+                                                        <input type="text" class="form-control" name="p_bi_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -370,7 +370,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_mtk_desk">
+                                                        <input type="text" class="form-control" name="p_mtk_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -382,7 +382,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_ba_desk">
+                                                        <input type="text" class="form-control" name="p_ba_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -394,7 +394,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_si_desk">
+                                                        <input type="text" class="form-control" name="p_si_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -406,7 +406,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_big_desk">
+                                                        <input type="text" class="form-control" name="p_big_desk" maxlength="200">
                                                     </div>
                                                 </div>
                                                 <h4> &nbsp; &nbsp; Kelompok B</h4>
@@ -420,7 +420,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_sb_desk">
+                                                        <input type="text" class="form-control" name="p_sb_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -432,7 +432,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_pjok_desk">
+                                                        <input type="text" class="form-control" name="p_pjok_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -444,7 +444,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_pk_desk">
+                                                        <input type="text" class="form-control" name="p_pk_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -458,7 +458,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_aswaja_desk">
+                                                        <input type="text" class="form-control" name="p_aswaja_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -471,7 +471,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_inf_desk">
+                                                        <input type="text" class="form-control" name="p_inf_desk" maxlength="200">
                                                     </div>
                                                 </div>
                                                 <h4> Kelompok C</h4>
@@ -485,7 +485,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_geo_desk">
+                                                        <input type="text" class="form-control" name="p_geo_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -498,7 +498,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_sj_desk">
+                                                        <input type="text" class="form-control" name="p_sj_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -511,7 +511,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_sos_desk">
+                                                        <input type="text" class="form-control" name="p_sos_desk" maxlength="200">
                                                     </div>
                                                 </div>
 
@@ -524,7 +524,7 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">Deskripsi</label>
-                                                        <input type="text" class="form-control" name="p_eko_desk">
+                                                        <input type="text" class="form-control" name="p_eko_desk" maxlength="200">
                                                     </div>
                                                 </div>
 

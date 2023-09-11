@@ -24,13 +24,13 @@ if (isset($_GET['id'])) {
 
 
     // kondisi cek guru mapel tsb BEGIN
-    $cekgurupengampu = "SELECT * FROM mapel WHERE id_guru = $userId";
-    $resultcekgurupengampu = mysqli_query($connection, $cekgurupengampu);
+    $cekgm = "SELECT * FROM mapel WHERE id_guru = $userId";
+    $resultgm = mysqli_query($connection, $cekgm);
 
-    if (mysqli_num_rows($resultcekgurupengampu) > 0) {
-        $hasilcekgurupengampu = mysqli_fetch_assoc($resultcekgurupengampu);
-        $isgurupengampu = $hasilcekgurupengampu['nama'];
+    while ($row = mysqli_fetch_assoc($resultgm)) {
+        $arraygm[] = $row['nama'];
     }
+<<<<<<< Updated upstream
 
     $cekgurupengampu2 = "SELECT * FROM mapel WHERE id_guru = $userId";
     $resultcekgurupengampu2 = mysqli_query($connection, $cekgurupengampu2);
@@ -42,6 +42,12 @@ if (isset($_GET['id'])) {
             continue;
         }
     }
+=======
+    // print_r($arraygm);
+
+    $isgurupengampu = isset($arraygm[0]) ? $arraygm[0] : '';
+    $isgurupengampu2 = isset($arraygm[1]) ? $arraygm[1] : '';
+>>>>>>> Stashed changes
 
     // kondisi cek guru mapel tsb END
 
@@ -101,6 +107,12 @@ if (isset($_GET['id'])) {
 
 
                                         <div class="row <?php if ($iswalikelas == 1) {
+<<<<<<< Updated upstream
+=======
+                                                            echo "d-display";
+                                                        }
+                                                        if ($role == 1) {
+>>>>>>> Stashed changes
                                                             echo "d-display";
                                                         } else if ($iswalikelas == 0) {
                                                             echo 'd-none';

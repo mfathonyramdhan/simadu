@@ -11,8 +11,29 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     WHERE r.id_rapor = $idRapor";
     $result = mysqli_query($connection, $query);
 
+    // batas deskripsi 65 karakter BEGIN
+
+
+    $batasKarakter = 65;
+
+    function formatDeskripsi($deskripsi, $batasKarakter)
+    {
+        $panjangDeskripsi = strlen($deskripsi);
+
+        if ($panjangDeskripsi > $batasKarakter) {
+            return wordwrap($deskripsi, $batasKarakter, "<br>\n", true);
+        } else {
+            return $deskripsi;
+        }
+    }
+
+
+    // batas deskripsi 65 karakter BEGIN
+
     if (mysqli_num_rows($result) > 0) {
         $raporData = mysqli_fetch_assoc($result);
+        $spirDeskripsi = $raporData['spir_desk'];
+        $sosDeskripsi = $raporData['sos_desk'];
 ?>
 
 
@@ -2917,7 +2938,8 @@ hQEAAFxKAAAAAA==
                         <td colspan=3 rowspan=4 height=80 class=xl11421966 style='border-right:.5pt solid black;
   border-bottom:.5pt solid black;height:60.0pt'><?php echo $raporData['spir_predikat']; ?>
                         </td>
-                        <td colspan=8 rowspan=4 class=xl12421966><?php echo $raporData['spir_desk']; ?>
+                        <td colspan=8 rowspan=4 class=xl12421966><?php echo formatDeskripsi($spirDeskripsi, $batasKarakter);
+                                                                    ?>
                         </td>
                         <td class=xl1521966></td>
                     </tr>
@@ -2966,7 +2988,8 @@ hQEAAFxKAAAAAA==
                         <td colspan=3 rowspan=4 height=80 class=xl11421966 style='border-right:.5pt solid black;
   border-bottom:.5pt solid black;height:60.0pt'><?php echo $raporData['sos_predikat']; ?>
                         </td>
-                        <td colspan=8 rowspan=4 class=xl12421966><?php echo $raporData['sos_desk']; ?>
+                        <td colspan=8 rowspan=4 class=xl12421966><?php
+                                                                    echo formatDeskripsi($sosDeskripsi, $batasKarakter); ?>
                         </td>
                         <td class=xl1521966></td>
                     </tr>
@@ -3997,10 +4020,72 @@ hQEAAFxKAAAAAA==
   height:15.0pt;width:270pt'>
                             <font class="font721966">Jumlah</font>
                         </td>
-                        <td class=xl9121966 style='border-top:none;border-left:none'>&nbsp;</td>
+                        <td class=xl9121966 style='border-top:none;border-left:none'>
+
+
+                            <?php
+                            // penjumlahan nilai rapor
+                            // Simulasikan koneksi ke database
+                            // Daftar nama kolom dalam tabel "rapor"
+                            $kolom = array(
+                                'p_qurdis_nilai',
+                                'p_aa_nilai',
+                                'p_fikih_nilai',
+                                'p_ski_nilai',
+                                'p_pp_nilai',
+                                'p_bi_nilai',
+                                'p_mtk_nilai',
+                                'p_ba_nilai',
+                                'p_si_nilai',
+                                'p_big_nilai',
+                                'p_sb_nilai',
+                                'p_pjok_nilai',
+                                'p_pk_nilai',
+                                'p_aswaja_nilai',
+                                'p_inf_nilai',
+                                'p_geo_nilai',
+                                'p_sj_nilai',
+                                'p_sos_nilai',
+                                'p_eko_nilai',
+                            );
+
+                            $totalNilai = 0;
+                            $stopColumn = 'p_eko_nilai'; // Kolom terakhir yang ingin dihitung
+
+                            if ($connection) {
+                                foreach ($kolom as $namaKolom) {
+                                    // Perintah SQL untuk mengambil nilai dari kolom
+                                    $query = "SELECT $namaKolom FROM rapor";
+                                    $result = mysqli_query($connection, $query);
+
+                                    if ($result) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            // Mengambil nilai dari hasil query
+                                            $nilai = $row[$namaKolom];
+
+                                            // Menambahkan nilai ke $totalNilai
+                                            $totalNilai += $nilai;
+                                        }
+                                    }
+
+                                    // Cek apakah sudah mencapai kolom yang ingin dihentikan
+                                    if ($namaKolom === $stopColumn) {
+                                        break;
+                                    }
+                                }
+
+
+                                // Hasil jumlah total nilai dari kolom-kolom yang mengandung "_nilai"
+                                echo $totalNilai;
+                            } else {
+                                echo "-";
+                            }
+                            ?>
+
+                        </td>
                         <td class=xl8021966 width=64 style='border-top:none;border-left:none;
   width:48pt'>&nbsp;</td>
-                        <td class=xl9221966 style='border-top:none;border-left:none'>&nbsp;</td>
+                        <td class=xl9221966 style='border-top:none;border-left:none'><?= $totalNilai; ?></td>
                         <td class=xl8021966 width=64 style='border-top:none;border-left:none;
   width:48pt'>&nbsp;</td>
                         <td class=xl7121966></td>
